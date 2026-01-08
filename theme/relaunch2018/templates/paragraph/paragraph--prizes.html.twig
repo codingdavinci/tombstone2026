@@ -1,0 +1,24 @@
+{#
+/**
+ * @see paragraphs.html.twig
+ */
+#}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished'
+  ]
+%}
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    <h2 class="container">{{ 'Prizes'|trans }}</h2>
+    <hr class="separator">
+    {% block content %}
+      <div class="container">
+        {{ content }}
+      </div>
+    {% endblock %}
+  </div>
+{% endblock paragraph %}

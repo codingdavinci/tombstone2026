@@ -1,0 +1,20 @@
+
+#block-tags {
+  .menu {
+    @include tag-list;
+  }
+}
+
+#block-views-block-articles-block-1 {
+  margin-top: map_get($spacers, 10);
+}
+
+.view-articles.view-display-id-page_1 {
+  clear: both;
+
+  .view-content {
+    .views-row {
+      margin-bottom: map_get($spacers, 3);
+    }
+  }
+}

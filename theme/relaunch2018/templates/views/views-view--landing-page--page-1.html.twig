@@ -1,0 +1,77 @@
+{#
+/**
+ * @see views-view.html.twig
+ */
+#}
+{%
+  set classes = [
+    'view',
+    'view-' ~ id|clean_class,
+    'view-id-' ~ id,
+    'view-display-id-' ~ display_id,
+    dom_id ? 'js-view-dom-id-' ~ dom_id,
+    'container',
+  ]
+%}
+
+{% set have_upcoming_events = drupal_view_result('landing_page', 'attachment_1')|length > 0 %}
+
+<div{{ attributes.addClass(classes) }}>
+  <div class="row">
+  {% if header %}
+    <div class="view-header">
+      {{ header }}
+    </div>
+  {% endif %}
+  {% if exposed %}
+    <div class="view-filters">
+      {{ exposed }}
+    </div>
+  {% endif %}
+  {% if have_upcoming_events %}
+      <div class="attachment attachment-before col-12">
+        {% if events_title %}
+          <h2>{{ events_title }}</h2>
+        {% endif %}
+
+        {{ drupal_view('landing_page', 'attachment_1') }}
+      </div>
+  {% endif %}
+
+    <div class="view-content col-12">
+      {% if title %}
+        <h2>{{ title }}</h2>
+      {% endif %}
+
+      {% if rows %}
+        {{ rows }}
+      {% elseif empty %}
+        <div class="view-empty">
+          {{ empty }}
+        </div>
+      {% endif %}
+    </div>
+
+  {% if pager %}
+    {{ pager }}
+  {% endif %}
+  {% if attachment_after %}
+    <div class="attachment attachment-after">
+      {{ attachment_after }}
+    </div>
+  {% endif %}
+  {% if more %}
+    {{ more }}
+  {% endif %}
+  {% if footer %}
+    <div class="view-footer {% if attachment_before %}col-sm-7 offset-sm-5{% else %}col-12{% endif %}">
+      {{ footer }}
+    </div>
+  {% endif %}
+  {% if feed_icons %}
+    <div class="feed-icons">
+      {{ feed_icons }}
+    </div>
+  {% endif %}
+</div>
+</div>

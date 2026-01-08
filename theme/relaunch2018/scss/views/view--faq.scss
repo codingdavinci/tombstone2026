@@ -1,0 +1,90 @@
+
+.view-faq {
+  .view-content {
+    > .item-list {
+      margin-bottom: map_get($spacers, 5);
+
+      h2 {
+        padding-bottom: map_get($spacers, 2);
+        text-align: right;
+        border-bottom: 1px solid $green;
+      }
+
+      ul {
+        margin: 0;
+
+        li {
+          margin: 0;
+
+          .views-field-title {
+            margin-bottom: map_get($spacers, 3);
+
+            a {
+              color: $gray;
+
+              &:active,
+              &:focus {
+                text-decoration: none;
+              }
+            }
+          }
+
+          .item-content {
+            display: none;
+            margin-bottom: map_get($spacers, 5);
+
+            .views-field-body {
+              p {
+                &:last-child {
+                  margin-bottom: 0;
+                }
+              }
+
+              ul {
+                @include ul-dashed;
+                margin-bottom: 1em;
+                padding-left: 1em;
+
+                li {
+                  margin: 0;
+                }
+              }
+
+              & + * {
+                margin-top: map_get($spacers, 3);
+              }
+            }
+
+            .views-field-field-links {
+              ul {
+                padding-left: 1em;
+
+                li {
+                  &:before {
+                    display: inline-block;
+                    margin-right: 0.3rem;
+                    margin-left: -1.8em;
+                    content: '';
+                    vertical-align: middle;
+                    color: $green;
+                    font-family: $font-family-icons;
+                    font-size: 0.7rem;
+                  }
+                }
+              }
+            }
+          }
+
+          &.active {
+            .views-field-title {
+              a {
+                @include link-underline;
+                color: $green;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,146 @@
+
+.view {
+  .view-filters {
+    margin-bottom: map_get($spacers, 3);
+
+    form {
+      .form--inline {
+        .form-item {
+          float: none;
+          margin-top: 0;
+          margin-right: 0;
+
+          .bef-links {
+            ul {
+              padding: 0;
+
+              li {
+                display: inline;
+
+                ul {
+                  display: none;
+                }
+
+                &.bef-link--selected {
+                  > ul {
+                    display: block;
+                  }
+                }
+              }
+            }
+          }
+
+          label {
+            @include font-size(16px);
+          }
+
+          &.form-type-textfield {
+            label {
+              margin-bottom: 0;
+            }
+
+            input {
+              @include font-size(16px);
+              width: 100%;
+              padding: map_get($spacers, 1);
+            }
+          }
+
+          &.form-type-select {
+            label {
+              width: 100%;
+              border-bottom: 1px solid $gray-5;
+            }
+          }
+
+          &.form-item-institution {
+            input {
+              padding-right: 20px;
+            }
+          }
+        }
+
+        > fieldset {
+          @include media-breakpoint-up(lg) {
+            legend {
+              display: none;
+            }
+            .collapse:not(.show) {
+              display: block !important;
+            }
+          }
+        }
+
+        .form-actions {
+          input {
+            width: 100%;
+            margin: 0 0 map_get($spacers, 2) 0;
+            padding-right: map_get($spacers, 1);
+            padding-left: map_get($spacers, 1);
+          }
+        }
+      }
+    }
+  }
+
+  .pager {
+    .pager__items {
+      justify-content: center;
+    }
+  }
+
+  .view-content {
+    .views-row {
+      @media #{$ie} {
+        margin-bottom: map_get($spacers, 3);
+      }
+    }
+
+    .card-columns {
+
+      .card {
+        @include boxShadow;
+        display: inline-block;
+        width: 100%;
+        margin-bottom: $grid-gutter-width;
+        background-color: $white;
+
+        .card-body {
+          .card-title {
+            @include font-size(20px);
+            margin-bottom: map_get($spacers, 2);
+          }
+
+          .field {
+            @include font-size(16px);
+
+            .field__item {
+              display: inline-flex;
+            }
+
+            .paragraph {
+              display: inline-block;
+            }
+
+            .field {
+              display: inline-block;
+              margin: 0.2rem 0 0 0;
+            }
+          }
+        }
+
+        @media #{$ie} {
+          overflow: hidden;
+        }
+      }
+
+      @include media-breakpoint-up(sm) {
+        column-count: 2;
+      }
+
+      @include media-breakpoint-up(lg) {
+        column-count: 3;
+      }
+    }
+  }
+}

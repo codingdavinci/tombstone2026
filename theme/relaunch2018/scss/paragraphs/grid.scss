@@ -1,0 +1,36 @@
+
+.paragraph--type--grid {
+  .field--name-field-text {
+    margin-bottom: map_get($spacers, 6);
+  }
+
+  .field--name-field-grid-elements {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    grid-gap: map_get($spacers, 6);
+
+    > .field__item {
+
+      .paragraph--type--grid-element {
+        .field--name-field-image {
+          margin-bottom: map_get($spacers, 3);
+
+          img {
+            border-radius: 0;
+          }
+        }
+      }
+
+      @media #{$ie} {
+        display: inline-block;
+        width: 50%;
+        padding: map_get($spacers, 2);
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}

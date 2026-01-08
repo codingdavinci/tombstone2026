@@ -1,0 +1,32 @@
+
+.paragraph--type--attributed-image,
+.paragraph--type--project-image {
+  display: inline-block;
+  text-align: center;
+
+  .field--name-field-inline-image {
+    display: inline-block;
+
+    img {
+      @include img-fluid;
+    }
+  }
+
+  .paragraph--type--attributed-image--attribution,
+  .paragraph--type--project-image--attribution {
+    @include font-size(14px);
+    text-align: right;
+
+    & div {
+      display: inline;
+    }
+
+    & > div {
+      margin-right: 0.3em;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

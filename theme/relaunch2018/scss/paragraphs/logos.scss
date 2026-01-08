@@ -1,0 +1,64 @@
+
+.paragraph--type--logos {
+  .field--name-field-logo-groups {
+    .field__item {
+      margin-bottom: map_get($spacers, 6);
+
+      .paragraph--type--logo-group {
+        .field__items {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-auto-rows: 1fr;
+          grid-gap: map_get($spacers, 6) map_get($spacers, 10);
+          align-items: center;
+          justify-items: center;
+
+          .field__item {
+            margin: 0;
+
+            .paragraph--type--logo {
+              .field--name-field-inline-image {
+                img {
+                  @include img-fluid;
+                }
+              }
+            }
+
+            @media #{$ie} {
+              display: inline-block;
+              width: 100%;
+
+              @include media-breakpoint-up(sm) {
+                width: 50%;
+              }
+
+              @include media-breakpoint-up(md) {
+                width: 50%;
+              }
+
+              @include media-breakpoint-up(lg) {
+                width: 33%;
+              }
+
+              @include media-breakpoint-up(xl) {
+                width: 25%;
+              }
+            }
+          }
+
+          @include media-breakpoint-up(sm) {
+            grid-template-columns: 1fr 1fr;
+          }
+
+          @include media-breakpoint-up(md) {
+            grid-template-columns: 1fr 1fr 1fr;
+          }
+
+          @include media-breakpoint-up(lg) {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+          }
+        }
+      }
+    }
+  }
+}

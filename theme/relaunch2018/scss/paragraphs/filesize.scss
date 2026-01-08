@@ -1,0 +1,12 @@
+
+.paragraph--type--filesize {
+  > div {
+    display: inline;
+
+    &.field--name-field-unit {
+      &::before {
+        content: '\00a0';
+      }
+    }
+  }
+}

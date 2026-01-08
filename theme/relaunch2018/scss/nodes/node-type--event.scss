@@ -1,0 +1,181 @@
+.node--type-event {
+
+  &.node--view-mode-full {
+    > .node__content {
+      > .field {
+        margin-bottom: map_get($spacers, 10);
+
+        .field__label {
+          font-weight: $font-weight-normal;
+        }
+
+        &.field--name-field-winners {
+          > .field__items {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-auto-rows: 1fr;
+            grid-gap: map_get($spacers, 4);
+
+            > .field__item {
+              position: relative;
+
+              @media #{$ie} {
+                display: inline-block;
+                padding: map_get($spacers, 2);
+
+                img {
+                  width: 100%;
+                }
+
+                @include media-breakpoint-up(sm) {
+                  width: 50%;
+                }
+
+                @include media-breakpoint-up(lg) {
+                  width: 33%;
+                }
+
+                @include media-breakpoint-up(xl) {
+                  width: 25%;
+                }
+              }
+            }
+
+            @include media-breakpoint-up(sm) {
+              grid-template-columns: 1fr 1fr;
+            }
+
+            @include media-breakpoint-up(md) {
+              grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            @include media-breakpoint-up(lg) {
+              grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+          }
+        }
+
+        &.field--name-field-paragraphs {
+          overflow-x: hidden;
+
+          > .field__item {
+            > .paragraph:not(.paragraph--type--heading) {
+              margin-bottom: map_get($spacers, 10);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.node--view-mode-teaser,
+  &.node--view-mode-preview {
+    @include easeAll;
+    @include font-size(28px);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: map_get($spacers, 2);
+    color: $white;
+    background-color: $green;
+
+    .node--event--teaser--content {
+      flex: 1;
+
+      .node--event--teaser--logo {
+        img {
+          @include img-fluid;
+          width: 33%;
+
+          @include media-breakpoint-up(lg) {
+            width: 50%;
+          }
+
+          @include media-breakpoint-up(xl) {
+            width: 33%;
+          }
+        }
+      }
+    }
+
+    h2 {
+      @include font-size(36px);
+      margin-top: map_get($spacers, 1);
+      margin-bottom: map_get($spacers, 3);
+      text-transform: uppercase;
+      word-wrap: break-word;
+      color: $white;
+    }
+
+    &.node--view-mode-preview {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+      text-align: center;
+
+      .node--event--teaser--logo {
+        img {
+          @include media-breakpoint-up(sm) {
+            width: 90%;
+          }
+
+          @include media-breakpoint-up(md) {
+            width: 70%;
+          }
+
+          @include media-breakpoint-up(xl) {
+            width: 80%;
+          }
+        }
+      }
+
+      > * {
+        margin-top: map_get($spacers, 1);
+        margin-bottom: map_get($spacers, 1);
+
+        &:first-child {
+          margin-top: 0;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .node--event--teaser--register {
+      margin-top: map_get($spacers, 10);
+      text-decoration: underline;
+
+      &:before {
+        margin-right: 1.3em !important;
+        color: $white;
+        font-size: 0.8em;
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding: map_get($spacers, 4);
+    }
+
+    @media #{$ie} {
+      display: block;
+      margin-bottom: map_get($spacers, 4);
+    }
+  }
+}
+
+.node--link-wrapper--event {
+  &:hover {
+    text-decoration: none;
+
+    .node--view-mode-teaser {
+      background-color: $green;
+
+      .node--event--teaser--register {
+        text-decoration: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+
+.view-landing-page {
+
+  &.view-display-id-page_1 {
+    .view-content {
+      .views-row {
+        margin-bottom: map_get($spacers, 3);
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{#
+/**
+ * @see field.html.twig
+ */
+#}
+{% apply spaceless %}
+{%
+  set classes = [
+    'field',
+    'field--name-' ~ field_name|clean_class,
+    'field--type-' ~ field_type|clean_class,
+    'field--label-' ~ label_display,
+  ]
+%}
+<div class="horizontal-nav container" id="boxes-{{ uuid }}">
+  <a href="#boxes-{{ uuid }}" class="horizontal-nav--left" role="button">
+    <span class="horizontal-nav--prev--icon"></span>
+  </a>
+  <a href="#boxes-{{ uuid }}" class="horizontal-nav--right" role="button">
+    <span class="horizontal-nav--next--icon"></span>
+  </a>
+</div>
+<div{{ attributes.addClass(classes, 'field__items') }}>
+  {% for item in items %}
+    <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
+  {% endfor %}
+</div>
+{% endapply %}

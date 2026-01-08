@@ -1,0 +1,57 @@
+{#
+/**
+ * @see page.html.twig
+ */
+#}
+{% set tiled_header = is_front or node and node.bundle == 'event' %}
+
+{% if tiled_header %}
+  {% if is_front %}
+    {% include '@relaunch2018/page/header--front.html.twig' %}
+  {% else %}
+    {% include '@relaunch2018/page/header--event.html.twig' %}
+  {% endif %}
+{% endif %}
+
+{{ page.primary_menu }}
+
+<div class="layout-container--wrapper{% if tiled_header %} header-tiles-above{% endif %}">
+
+    {% if not tiled_header and (page.admin_tabs or page.header) %}
+      <header>
+        {% if page.admin_tabs %}
+          {{ page.admin_tabs }}
+        {% endif %}
+
+        {% if page.header %}
+          {{ page.header }}
+        {% endif %}
+      </header>
+    {% endif %}
+
+    {{ page.breadcrumb }}
+
+    {{ page.highlighted }}
+
+    {{ page.help }}
+
+    <main>
+      <!--
+      <div id="netpromoterscore">
+        {{ drupal_entity('webform', 'netpromoterscore') }}
+      </div>
+      -->
+      <a id="main-content" tabindex="-1"></a>
+        {% if tiled_header and page.admin_tabs %}
+          {{ page.admin_tabs }}
+        {% endif %}
+        {{ page.content }}
+    </main>
+
+  {% if page.footer %}
+    <footer>
+      {{ page.footer }}
+    </footer>
+  {% endif %}
+
+</div>

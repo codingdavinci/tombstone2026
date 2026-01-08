@@ -1,0 +1,145 @@
+global-css:
+  version: 1.0
+  css:
+    theme:
+      css/global.css: {}
+      ../../../libraries/typeface-barlow/index.css: {}
+  dependencies:
+    - relaunch2018/cdv-font
+    - relaunch2018/fontawesome
+
+global-js:
+  version: 1.0
+  js:
+    js/global.js: {}
+  dependencies:
+    - block_figures/block-figures
+    - relaunch2018/bootstrap-js
+    - relaunch2018/carousel
+    - relaunch2018/color
+    - relaunch2018/header
+    - relaunch2018/horizontal-nav
+    - relaunch2018/jquery-color
+    - relaunch2018/jquery-easing
+    - relaunch2018/menu
+    - relaunch2018/view-faq
+    - relaunch2018/netpromoterscore
+
+bootstrap-js:
+  version: 4.1
+  license:
+    name: MIT
+    url: https://github.com/twbs/bootstrap/blob/v4.0.0/LICENSE
+    gpl-compatible: true
+  js:
+    ../../../libraries/bootstrap/dist/js/bootstrap.js: {}
+  dependencies:
+    - core/jquery
+    - relaunch2018/popper-js
+
+carousel:
+  version: 1.x
+  js:
+    js/carousel.js: {}
+  dependencies:
+    - core/jquery
+    - relaunch2018/bootstrap-js
+    - relaunch2018/hammerjs
+
+cdv-font:
+  version: 1.x
+  css:
+    theme:
+      lib/cdv_icons/css/cdv_icons.css: {}
+
+color:
+  version: 1.0
+  js:
+    js/color-scheme.js: {}
+  dependencies:
+    - core/jquery
+    - relaunch2018/jquery-color
+
+fontawesome:
+  version: 5.5.0
+  license:
+    name: SIL OFL 1.1
+    url: https://scripts.sil.org/OFL
+    gpl-compatible: true
+  css:
+    theme:
+      ../../../libraries/fontawesome/css/all.css: {}
+
+hammerjs:
+  version: 2.0.8
+  license:
+    name: MIT
+    url: https://github.com/hammerjs/hammer.js/blob/master/LICENSE.md
+    gpl-compatible: true
+  js:
+    ../../../libraries/hammerjs/hammer.js: {}
+
+header:
+  version: 1.0
+  js:
+    js/header.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+
+horizontal-nav:
+  version: 1.0
+  js:
+    js/horizontal-nav.js: {}
+  dependencies:
+    - core/jquery
+    - relaunch2018/hammerjs
+
+jquery-color:
+  version: 3.0.0-alpha
+  license:
+    name: CC0
+    url: https://github.com/jquery/jquery-color/blob/master/LICENSE.txt
+    gpl-compatible: true
+  js:
+    ../../../libraries/jquery-color/dist/jquery.color.js: {}
+
+jquery-easing:
+  version: 1.4.1
+  license:
+    name: BSD-3-Clause
+    url: https://github.com/gdsmith/jquery.easing/blob/master/LICENSE
+    gpl-compatible: true
+  js:
+    ../../../libraries/jquery.easing/jquery.easing.js: {}
+
+menu:
+  version: 1.0
+  js:
+    js/menu.js: {}
+  dependencies:
+    - core/jquery
+    - relaunch2018/jquery-easing
+
+popper-js:
+  version: 1.14.6
+  license:
+    name: MIT
+    url: https://github.com/FezVrasta/popper.js/blob/master/LICENSE.md
+    gpl-compatible: true
+  js:
+    ../../../libraries/popper.js/dist/umd/popper.js: {}
+  dependencies:
+    - core/jquery
+
+view-faq:
+  version: 1.0
+  js:
+    js/view-faq.js: {}
+  dependencies:
+    - core/jquery
+    - relaunch2018/jquery-easing
+netpromoterscore:
+  version: 1.0
+  js:
+    js/netpromoterscore.js: {}

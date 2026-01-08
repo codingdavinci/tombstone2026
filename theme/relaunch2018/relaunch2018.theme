@@ -1,0 +1,593 @@
+<?php
+
+use Drupal\block\Entity\Block;
+use Drupal\Core\Url;
+use Drupal\entity_reference_revisions\EntityReferenceRevisionsFieldItemList;
+use Drupal\entity_reference_revisions\Plugin\Field\FieldType\EntityReferenceRevisionsItem;
+use Drupal\file\Entity\File;
+use Drupal\image\Entity\ImageStyle;
+use Drupal\media\IFrameMarkup;
+use Drupal\node\Entity\Node;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Implements THEME_preprocess().
+ *
+ * @param array $variables
+ */
+function relaunch2018_preprocess(array &$variables) {
+  $variables['theme_path'] = base_path() . $variables['directory'];
+}
+
+/**
+ * Implements THEME_preprocess_HOOK().
+ *
+ * @param array $variables
+ */
+function relaunch2018_preprocess_page(array &$variables) {
+  /** @var \Drupal\Core\Entity\EntityRepository $repository */
+  $repository = \Drupal::service('entity.repository');
+
+  foreach (array_keys($variables['page']['header']) as $blockId) {
+    $block = Block::load($blockId);
+
+    if ($block !== null) {
+      $derivativeId = $block->getPlugin()->getDerivativeId();
+
+      if ($derivativeId !== null) {
+        /** @var Block $parentBlock */
+        $parentBlock = $repository->loadEntityByUuid(
+          'block_content',
+          $derivativeId
+        );
+
+        if ($parentBlock->bundle() === 'extended_page_header') {
+          $variables['extended_page_header'] = TRUE;
+          break;
+        }
+      }
+    }
+  }
+
+  if (isset($variables['node'])) {
+    $node = null;
+
+    if ($variables['node'] instanceof Node) {
+      $node = $variables['node'];
+    }
+    if (is_string($variables['node'])) {
+      // On revision page, $variables['node'] contains the node id.
+      $node = Node::load($variables['node']);
+    }
+
+    if ($node instanceof Node && $node->bundle() === 'event') {
+      // Add custom tiled header on event page
+
+      $file = null;
+
+      if ($node->get('field_header_tiles')->target_id !== null) {
+        $file = File::load($node->get('field_header_tiles')->target_id);
+      }
+      else {
+        $settings = $node->get('field_header_tiles')->getSettings();
+        $uuid = $settings = $settings['default_image']['uuid'];
+        $file = \Drupal::service('entity.repository')->loadEntityByUuid('file', $uuid);
+      }
+
+      $url = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
+
+      // Use JS to inject custom tiled header to not spoil caching:
+      $variables['#attached']['drupalSettings']['relaunch2018']['tiledHeader'] = $url;
+
+      _relaunch2018_add_color_scheme($node, $variables);
+    }
+  }
+
+  $menu_parameters = new \Drupal\Core\Menu\MenuTreeParameters();
+  $menu_parameters->setMaxDepth(1);
+  $menu_parameters->excludeRoot();
+
+  /** @var \Drupal\Core\Menu\MenuLinkTree $menu_tree_service */
+  $menu_tree_service = \Drupal::service('menu.link_tree');
+  $tree = $menu_tree_service->load('account', $menu_parameters);
+  $build = $menu_tree_service->build($tree);
+
+  $langSwitcherBlock = \Drupal\block\BlockViewBuilder::lazyBuilder(
+    'languageswitcher',
+    'full'
+  );
+
+  $variables['#attached']['drupalSettings']['responsive_menu']['mmenu_settings'] = [
+    'slidingSubmenus' => false,
+    'extensions' => [
+      'fx-listitems-slide',
+    ],
+    'navbars' => [
+      [
+        "position" => "top",
+        "content" => [
+          \Drupal::service('renderer')->renderPlain($langSwitcherBlock),
+        ],
+      ], [
+        "position" => "bottom",
+        "content" => [
+          \Drupal::service('renderer')->renderPlain($build),
+        ],
+      ],
+    ],
+  ];
+
+  $variables['#attached']['drupalSettings']['responsive_menu']['mmenu_options'] = [
+    'language' => \Drupal::languageManager()->getCurrentLanguage()->getId(),
+  ];
+}
+
+/**
+ * Implements THEME_preprocess_HOOK().
+ *
+ * @param array $variables
+ */
+function relaunch2018_preprocess_menu__main(array &$variables) {
+  $block = \Drupal\block\Entity\Block::load('languageswitcher');
+  $variables['language_switcher'] = \Drupal::entityTypeManager()
+    ->getViewBuilder('block')
+    ->view($block);
+}
+
+/**
+ * Implements THEME_preprocess_HOOK().
+ *
+ * @param array $variables
+ * @throws \Drupal\Core\TypedData\Exception\MissingDataException
+ */
+function relaunch2018_preprocess_node(array &$variables) {
+  /** @var Node $node */
+  $node = $variables['node'];
+
+  if ($node->bundle() === 'project') {
+    // Add award title to variables if project has won an award.
+    /** @var int $eventId */
+    if (($eventId = $node->get('field_event')->target_id) !== null) {
+      $nid = $node->id();
+      $awards = [];
+      /** @var Node $event */
+      if (($event = Node::load($eventId)) !== null) {
+        foreach ($event->get('field_winners')->getValue() as $element) {
+          $winner = Paragraph::load($element['target_id']);
+
+          if ($winner->get('field_project')->target_id === $nid) {
+            $awardTermId = $winner->get('field_award')->target_id;
+
+            if ($awardTermId !== null) {
+              $term = Term::load($awardTermId);
+
+              if ($term !== null) {
+                $awards[] = $term->label();
+              }
+            }
+          }
+        }
+      }
+
+      $variables['awards'] = $awards;
+    }
+  }
+
+  if (in_array($node->bundle(), ['data_set', 'project'])) {
+
+    /** @var EntityReferenceRevisionsFieldItemList $audioVideo */
+    $audioVideo = $node->get('field_audio_video');
+
+    if (($item = $audioVideo->get(0)) !== null) {
+      /** @var EntityReferenceRevisionsItem $item */
+      $paragraph = Paragraph::load($item->getValue()['target_id']);
+
+      $fileId = $paragraph->get('field_audio_video')->target_id;
+
+      if ($fileId === null) {
+        return;
+      }
+
+      if (($file = File::load($fileId)) === null) {
+        \Drupal::logger('relaunch2018')->error('Unable to load file with id ' . $fileId);
+      }
+      else {
+        $variables['audio_video'] = [
+          'mime_type' => $file->getMimeType(),
+          'url' => $file->createFileUrl(),
+        ];
+      }
+
+      /** @var EntityReferenceRevisionsFieldItemList $image */
+      $image = $node->get('field_attributed_image');
+
+      if (($item = $image->get(0)) !== null) {
+        /** @var EntityReferenceRevisionsItem $item */
+        $paragraph = Paragraph::load($item->getValue()['target_id']);
+
+        $fileId = $paragraph->get('field_inline_image')->target_id;
+
+        if ($fileId !== null) {
+          if (($file = File::load($fileId)) === null) {
+            \Drupal::logger('relaunch2018')->error('Unable to load file with id ' . $fileId);
+          }
+          else {
+            $imageStyle = ImageStyle::load('header');
+            $derivativeUri = $imageStyle->buildUri($file->getFileUri());
+            if (!file_exists($derivativeUri)) {
+              $imageStyle->createDerivative($file->getFileUri(), $derivativeUri);
+            }
+            $variables['audio_video']['poster'] = \Drupal::service('file_url_generator')->generateAbsoluteString($derivativeUri);
+          }
+        }
+      }
+    }
+  }
+
+  _relaunch2018_add_color_scheme($node, $variables);
+}
+
+/**
+ * Implements THEME_preprocess_HOOK().
+ *
+ * @param array $variables
+ */
+function relaunch2018_preprocess_block(array &$variables) {
+  if (!isset($variables['attributes']['id'])) {
+    return;
+  }
+
+  $containerBlocks = [
+    'block-block-about',
+    'block-startseiteplaybook',
+    'block-landing-page-group-possibilities',
+    'block-views-block-articles-block-1',
+    'block-views-block-events-block-2',
+    'block-views-block-data-sets-block-1',
+    'block-views-block-projects-block-1',
+  ];
+
+  if (in_array($variables['attributes']['id'], $containerBlocks)) {
+    if (!isset($variables['attributes']['class'])) {
+      $variables['attributes']['class'] = [];
+    }
+    $variables['attributes']['class'][] = 'container';
+  }
+}
+
+/**
+ * Implements THEME_preprocess_HOOK().
+ *
+ * @param array $variables
+ */
+function relaunch2018_preprocess_paragraph(array &$variables) {
+  /** @var Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  $containerParagraphs = [
+    'grid',
+    'image',
+    'text',
+    'video',
+  ];
+
+  if (in_array($paragraph->bundle(), $containerParagraphs)) {
+    if (!isset($variables['attributes']['class'])) {
+      $variables['attributes']['class'] = [];
+    }
+    $variables['attributes']['class'][] = 'container';
+  }
+
+  if ($paragraph->bundle() === 'winner') {
+    $parent = $paragraph->getParentEntity();
+
+    if ($parent instanceof Node) {
+      _relaunch2018_add_color_scheme($parent, $variables);
+    }
+  }
+}
+
+/**
+ * Implements THEME_preprocess_HOOK().
+ *
+ * @param array $variables
+ */
+function relaunch2018_preprocess_field(array &$variables) {
+  $uuid_service = \Drupal::service('uuid');
+  $variables['uuid'] = $uuid_service->generate();
+
+  $badgeFields = [
+    'field_access_mode',
+    'field_controlled_vocabularies',
+    'field_file_types',
+    'field_has_geo_references',
+    'field_keywords',
+    'field_license_code',
+    'field_metadata_format',
+    'field_metadata_standards',
+    'field_object_type',
+    'field_submission_type',
+    'field_theme',
+  ];
+
+  if (in_array($variables['field_name'], $badgeFields)) {
+    foreach ($variables['items'] as &$item) {
+      if (!isset($item['attributes']['class'])) {
+        $item['attributes']['class'] = [];
+      }
+      $item['attributes']['class'][] = 'badge';
+    }
+  } elseif ($variables['field_name'] === 'field_text' && $variables['entity_type']) {
+    if (!isset($variables['attributes']['class'])) {
+      $variables['attributes']['class'] = [];
+    }
+    $variables['attributes']['class'][] = 'clearfix';
+    $variables['attributes']['class'][] = 'text-formated';
+  }
+}
+
+/**
+ * Implements THEME_suggestions_HOOK_alter().
+ *
+ * @param array $suggestions
+ * @param array $variables
+ */
+function relaunch2018_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  $derivativeId = $variables['elements']['#derivative_plugin_id'];
+
+  if ($derivativeId !== null) {
+    /** @var \Drupal\Core\Entity\EntityRepository $repository */
+    $repository = \Drupal::service('entity.repository');
+
+    /** @var Block $parentBlock */
+    $parentBlock = $repository->loadEntityByUuid('block_content', $derivativeId);
+
+    if ($parentBlock !== null) {
+      array_splice(
+        $suggestions,
+        count($suggestions) - 2,
+        0,
+        'block__block_content__' . str_replace('-', '_', $parentBlock->bundle())
+      );
+    }
+  }
+}
+
+/**
+ * Implements THEME_suggestions_HOOK_alter().
+ *
+ * @param array $suggestions
+ * @param array $variables
+ */
+function relaunch2018_theme_suggestions_field_alter(array &$suggestions, array $variables) {
+  $suggestions[] = 'field__'
+    . $variables['element']['#entity_type'] . '__'
+    . $variables['element']['#field_name'] . '__'
+    . $variables['element']['#bundle'] . '__'
+    . $variables['element']['#view_mode'];
+}
+
+/**
+ * Implements THEME_page_attachments_alter().
+ *
+ * @param array $attachments
+ */
+function relaunch2018_page_attachments_alter(array &$attachments) {
+  // Remove default shortcut icon definition, since we set more elaborate
+  // definitions by overwriting html.html.twig.
+  if (isset($attachments['#attached']['html_head_link'])) {
+    foreach ($attachments['#attached']['html_head_link'] as $key => $config) {
+      if (isset($config[0]['rel']) && $config[0]['rel'] === 'shortcut icon') {
+        unset($attachments['#attached']['html_head_link'][$key]);
+      }
+    }
+  }
+}
+
+
+/**
+ * Implements THEME_preprocess_views_view().
+ *
+ * @param array $variables
+ */
+function relaunch2018_preprocess_views_view(array &$variables) {
+  if ($variables['id'] === 'landing_page' && $variables['display_id'] === 'page_1') {
+    /** @var \Drupal\views\ViewExecutable $view */
+    $view = $variables['view'];
+    $variables['title'] = $view->getTitle();
+
+    $eventsView = \Drupal\views\Views::getView('landing_page');
+    $eventsView->setDisplay('attachment_1');
+    $variables['events_title'] = $eventsView->getTitle();
+  }
+}
+
+/**
+ * Implements THEME_preprocess_HOOK().
+ *
+ * @param array $variables
+ */
+function relaunch2018_preprocess_views_exposed_form__data_sets(array &$variables) {
+  $secondaryFilters = [
+    'license',
+    'event',
+    'institution',
+    'search',
+  ];
+
+  $variables['show_secondary_options'] = false;
+
+  foreach ($secondaryFilters as $filterName) {
+    $value = $variables['form'][$filterName]['#value'];
+    if (!($value === 'All' || $value === '' || is_array($value) && count($value) === 0)) {
+      $variables['show_secondary_options'] = true;
+      break;
+    }
+  }
+}
+
+/**
+ * @param Node $node
+ * @param array $variables
+ */
+function _relaunch2018_add_color_scheme($node, array &$variables) {
+  if (
+    $node->hasField('field_color_scheme')
+    && $node->get('field_color_scheme')->target_id !== null
+  ) {
+    $term = Term::load($node->get('field_color_scheme')->target_id);
+
+    if ($term !== null) {
+      $variables['color_scheme'] = [
+        $term->get('field_color1')->getValue()[0]['value'],
+        $term->get('field_color2')->getValue()[0]['value'],
+      ];
+    }
+  }
+}
+
+/**
+ * Implements THEME_preprocess_HOOK().
+ * This matches the original hook implementation, but adds the variable
+ * $pager_max to detect the last page number.
+ *
+ * @param array $variables
+ */
+function relaunch2018_preprocess_pager(&$variables) {
+  /* @var $pager_manager \Drupal\Core\Pager\PagerManagerInterface */
+  $pager_manager = \Drupal::service('pager.manager');
+  $element = $variables['pager']['#element'];
+  $parameters = $variables['pager']['#parameters'];
+  $quantity = $variables['pager']['#quantity'];
+  $route_name = $variables['pager']['#route_name'];
+  $route_parameters = isset($variables['pager']['#route_parameters']) ? $variables['pager']['#route_parameters'] : [];
+  global $pager_page_array, $pager_total;
+
+  // Nothing to do if there is only one page.
+  if (!isset($pager_total[$element]) || $pager_total[$element] <= 1) {
+    return;
+  }
+  $tags = $variables['pager']['#tags'];
+
+  // Calculate various markers within this pager piece:
+  // Middle is used to "center" pages around the current page.
+  $pager_middle = ceil($quantity / 2);
+
+  // current is the page we are currently paged to.
+  $pager_current = $pager_page_array[$element] + 1;
+
+  // first is the first page listed by this pager piece (re quantity).
+  $pager_first = $pager_current - $pager_middle + 1;
+
+  // last is the last page listed by this pager piece (re quantity).
+  $pager_last = $pager_current + $quantity - $pager_middle;
+
+  // max is the maximum page number.
+  $pager_max = $pager_total[$element];
+  $variables['pager_max'] = $pager_max;
+
+  // End of marker calculations.
+  // Prepare for generation loop.
+  $i = $pager_first;
+  if ($pager_last > $pager_max) {
+
+    // Adjust "center" if at end of query.
+    $i = $i + ($pager_max - $pager_last);
+    $pager_last = $pager_max;
+  }
+  if ($i <= 0) {
+
+    // Adjust "center" if at start of query.
+    $pager_last = $pager_last + (1 - $i);
+    $i = 1;
+  }
+
+  // End of generation loop preparation.
+  // Create the "first" and "previous" links if we are not on the first page.
+  if ($pager_page_array[$element] > 0) {
+    $items['first'] = array();
+    $options = array(
+      'query' => $pager_manager->getUpdatedParameters($parameters, $element, 0),
+    );
+    $items['first']['href'] = Url::fromRoute($route_name, $route_parameters, $options)->toString();
+    if (isset($tags[0])) {
+      $items['first']['text'] = $tags[0];
+    }
+    $items['previous'] = array();
+    $options = array(
+      'query' => $pager_manager->getUpdatedParameters($parameters, $element, $pager_page_array[$element] - 1),
+    );
+    $items['previous']['href'] = Url::fromRoute($route_name, $route_parameters, $options)->toString();
+    if (isset($tags[1])) {
+      $items['previous']['text'] = $tags[1];
+    }
+  }
+  if ($i != $pager_max) {
+
+    // Add an ellipsis if there are further previous pages.
+    if ($i > 1) {
+      $variables['ellipses']['previous'] = TRUE;
+    }
+
+    // Now generate the actual pager piece.
+    for (; $i <= $pager_last && $i <= $pager_max; $i++) {
+      $options = array(
+        'query' => $pager_manager->getUpdatedParameters($parameters, $element, $i - 1),
+      );
+      $items['pages'][$i]['href'] = Url::fromRoute($route_name, $route_parameters, $options)->toString();
+      if ($i == $pager_current) {
+        $variables['current'] = $i;
+      }
+    }
+
+    // Add an ellipsis if there are further next pages.
+    if ($i < $pager_max + 1) {
+      $variables['ellipses']['next'] = TRUE;
+    }
+  }
+
+  // Create the "next" and "last" links if we are not on the last page.
+  $items = [];
+  if ($pager_page_array[$element] < $pager_max - 1) {
+    $items['next'] = array();
+    $options = array(
+      'query' => $pager_manager->getUpdatedParameters($parameters, $element, $pager_page_array[$element] + 1),
+    );
+    $items['next']['href'] = Url::fromRoute($route_name, $route_parameters, $options)->toString();
+    if (isset($tags[3])) {
+      $items['next']['text'] = $tags[3];
+    }
+    $items['last'] = array();
+    $options = array(
+      'query' => $pager_manager->getUpdatedParameters($parameters, $element, $pager_max - 1),
+    );
+    $items['last']['href'] = Url::fromRoute($route_name, $route_parameters, $options)->toString();
+    if (isset($tags[4])) {
+      $items['last']['text'] = $tags[4];
+    }
+  }
+  $variables['items'] = $items;
+
+  // The rendered link needs to play well with any other query parameter used
+  // on the page, like exposed filters, so for the cacheability all query
+  // parameters matter.
+  $variables['#cache']['contexts'][] = 'url.query_args';
+}
+
+/**
+ * Implements THEME_preprocess_HOOK().
+ * This matches the original hook implementation, but adds the variable
+ * $pager_max to detect the last page number.
+ *
+ * NOTE: This is a work-around suggested on
+ * https://www.drupal.org/project/drupal/issues/3043821. At some point, the core
+ * media module is supposed to support privacy settings as to the issue ticket.
+ *
+ * @param array $variables
+ */
+function relaunch2018_preprocess_media_oembed_iframe(&$variables) {
+  if (strpos((string) $variables['media'], 'youtube.com') !== FALSE) {
+    $variables['media'] = IFrameMarkup::create(str_replace('youtube.com/', 'youtube-nocookie.com/', $variables['media']));
+  }
+}

@@ -1,0 +1,104 @@
+{#
+/**
+ * @see node.html.twig
+ */
+#}
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'image-header',
+  ]
+%}
+{{ attach_library('classy/node') }}
+<article{{ attributes.addClass(classes) }}>
+  {{ content.content_moderation_control }}
+
+  <div class="article__header">
+    <div class="row m-0">
+      <div class="col-lg-5 px-8 article__header__left-column">
+        <div class="d-flex flex-column justify-content-between h-100">
+          <div>
+            {{ title_prefix }}
+            <h1{{ title_attributes }}>
+              {{ label }}
+            </h1>
+            {{ title_suffix }}
+          </div>
+          <div>
+            {{ institution_name|raw|replace({'&shy': '%shy%'})|escape|replace({'%shy%': '&shy'})|raw }}
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7 px-0 pr-md-7 text-right">
+        <div class="article__header__image">
+          {{ content.field_attributed_image }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% apply spaceless %}
+    <div class="container">
+      {% if content.field_events['#items'] is not empty %}
+        <div class="project__tags">
+          {{ content.field_events }}
+        </div>
+      {% endif %}
+      <div class="project__tags">
+        {{ object_type }}
+      </div>
+    </div>
+  {% endapply %}
+
+  <hr class="separator">
+
+  <div class="article--content-container container mb-6">
+    {% if content.field_audio_video['#items'] is not empty %}
+      <div class="field--name--field-audio-video__media">
+        <video controls poster="{{ audio_video.poster }}" class="img-fluid">
+          <source src="{{ audio_video.url }}" type="{{ audio_video.mime_type }}">
+          <p>
+            {% trans %}
+            Your browser does not support HTML5 video. Here is a <a href="{{ audio_video.url }}">link to the video</a> instead.
+            {% endtrans %}
+          </p>
+        </video>
+        {{ content.field_audio_video }}
+      </div>
+    {% endif %}
+
+    <div{{ content_attributes.addClass('node__content mt-4') }}>
+      {{ content.field_description }}
+      {{ content.field_description_unconstrained }}
+      <div class="data-set--badges">
+        {{ content.field_submission_type }}
+        {{ content.field_theme }}
+        {{ content.field_keywords }}
+      </div>
+      {{
+        content
+        |without('header_image')
+        |without('field_attributed_image')
+        |without('field_description_unconstrained')
+        |without('field_audio_video')
+        |without('field_events')
+        |without('field_description')
+        |without('field_object_type')
+        |without('field_submission_type')
+        |without('field_theme')
+        |without('field_keywords')
+        |without('projects')
+        |without('content_moderation_control')
+      }}
+
+      {{ content.projects }}
+    </div>
+
+  </div>
+
+</article>

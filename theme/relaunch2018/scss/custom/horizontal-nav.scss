@@ -1,0 +1,36 @@
+.horizontal-nav {
+  margin-bottom: map_get($spacers, 2);
+  text-align: right;
+
+  > a {
+    &:hover {
+      text-decoration: none;
+    }
+
+    &.inactive {
+      opacity: 0.2;
+    }
+
+    > span {
+      &:before {
+        @include icon;
+        display: inline-block;
+        margin: 0;
+        content: '\e825';
+      }
+    }
+
+    &.horizontal-nav--left {
+      > span {
+        &:before {
+          margin-right: map_get($spacers, 2);
+          transform: scaleX(-1);
+        }
+      }
+    }
+  }
+
+  @media #{$ie} {
+    display: none;
+  }
+}

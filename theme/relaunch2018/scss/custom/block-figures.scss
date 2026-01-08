@@ -1,0 +1,38 @@
+.block-block-figures {
+  @include font-size(28px);
+  font-weight: $font-weight-bold;
+
+  .block-figures--item {
+    &.block-figures--item--institutions {
+      color: $green;
+    }
+
+    &.block-figures--item--datasets {
+      color: $red;
+    }
+
+    &.block-figures--item--projects {
+      color: $blue;
+    }
+
+    .block-figures--item--image {
+      img {
+        @include img-fluid;
+      }
+    }
+
+    .block-figures--item--number {
+      padding: map_get($spacers, 5) $grid-gutter-width * 0.5;
+
+      @include media-breakpoint-up(md) {
+        padding-bottom: 0;
+      }
+    }
+
+    &:last-child {
+      .block-figures--item--number {
+        padding-bottom: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,197 @@
+@mixin menuFontSize {
+  font-size: 1.6rem;
+
+  @include media-breakpoint-up(sm) {
+    font-size: 1.8rem;
+  }
+
+  @include media-breakpoint-up(md) {
+    font-size: 2rem;
+  }
+}
+
+@mixin grayLink {
+  color: $gray;
+  font-weight: $font-weight-semi-bold;
+
+  &:hover {
+    color: $black;
+  }
+}
+
+@mixin greenLink {
+  color: $green;
+
+  &:hover {
+    text-decoration: none;
+    color: $green-dark;
+  }
+}
+
+@mixin easeAll {
+  transition: all 0.3s ease;
+}
+
+@mixin easeOut {
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@mixin curlyBraces($color, $fontWeight: '') {
+  &:after,
+  &:before {
+    color: $color;
+    @if ($fontWeight != '') {
+      font-weight: $fontWeight;
+    }
+  }
+  &:after {
+    margin-left: 0.1em;
+    content: '}';
+    color: $color;
+  }
+  &:before {
+    margin-right: 0.1em;
+    content: '{';
+    color: $color;
+  }
+}
+
+@mixin boxShadow() {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+@mixin icon {
+  margin-right: 0.4em;
+  font-family: $font-family-icons;
+}
+
+@mixin fa-icon {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+}
+
+@mixin fa-icon-brand {
+  font-family: 'Font Awesome 5 Brands';
+  font-weight: 900;
+}
+
+@mixin boxWidth($width) {
+  width: 100%;
+
+  @include media-breakpoint-up(sm) {
+    @if $width == 25 {
+      width: 50%;
+
+      @include media-breakpoint-up(md) {
+        width: 50%;
+      }
+      @include media-breakpoint-up(lg) {
+        width: 33%;
+      }
+      @include media-breakpoint-up(xl) {
+        width: 25%;
+      }
+    }
+    @else if $width == 33 {
+      width: 67%;
+
+      @include media-breakpoint-up(md) {
+        width: 50%;
+      }
+      @include media-breakpoint-up(lg) {
+        width: 40%;
+      }
+      @include media-breakpoint-up(xl) {
+        width: 33%;
+      }
+    }
+    @else if $width == 50 {
+      width: 80%;
+
+      @include media-breakpoint-up(md) {
+        width: 67%;
+      }
+      @include media-breakpoint-up(lg) {
+        width: 50%;
+      }
+    }
+    @else if $width == 67 {
+      @include media-breakpoint-up(lg) {
+        width: 67%;
+      }
+    }
+  }
+}
+
+@mixin tag-list {
+  display: inline-block;
+  margin: 0 !important;
+  padding: 0;
+  list-style-type: none;
+  vertical-align: bottom;
+  font-weight: $font-weight-semi-bold;
+
+  > * {
+    @include font-size(12px);
+    display: block;
+    float: left;
+    margin: 0 map_get($spacers, 1) map_get($spacers, 1) 0;
+    line-height: 2;
+
+    a,
+    span {
+      display: inline-block;
+      padding: 0 12px 2px 12px;
+      border: 1px solid $green;
+      border-radius: 50px;
+      line-height: 18px;
+    }
+
+    a {
+      @include easeAll;
+      color: $green;
+
+      &:hover {
+        text-decoration: none;
+        color: $white;
+        border-color: $green-dark;
+        background-color: $green-dark;
+      }
+    }
+
+    span {
+      cursor: default;
+      opacity: 0.5;
+      color: $white;
+      border-color: $green-dark;
+      background-color: $green-dark;
+    }
+
+    &.menu-item--active-trail {
+      a {
+        color: $white;
+        border-color: $green-dark;
+        background-color: $green-dark;
+      }
+    }
+  }
+}
+
+@mixin link-underline {
+  text-decoration: underline;
+
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+@mixin ul-dashed {
+  li:before {
+    display: inline-block;
+    margin-right: 0.2em;
+    margin-left: -0.9em;
+    content: '—';
+  }
+}

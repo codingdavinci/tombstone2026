@@ -1,0 +1,29 @@
+{#
+/**
+ * @see views-view-list.html.twig
+ */
+#}
+{% if attributes -%}
+  <div{{ attributes }}>
+{% endif %}
+  {% if title %}
+    <div class="h2">
+      <div class="container">
+        <h2>{{ title }}</h2>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="container">
+    <{{ list.type }}{{ list.attributes }}>
+      {% for row in rows %}
+        <li{{ row.attributes }}>
+          {{- row.content -}}
+        </li>
+      {% endfor %}
+    </{{ list.type }}>
+  </div>
+
+{% if attributes -%}
+  </div>
+{% endif %}

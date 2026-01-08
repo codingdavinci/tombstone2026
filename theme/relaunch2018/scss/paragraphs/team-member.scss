@@ -1,0 +1,54 @@
+
+.paragraph--type--team-member {
+  .field--name-field-email {
+    word-break: break-all;
+/*
+    .field__item {
+      &:before {
+        @include icon;
+        display: inline-block;
+        width: 1.25em;
+        margin-right: 0.3em;
+        content: '';
+        text-align: center;
+      }
+    }
+*/
+  }
+
+  .field--name-field-links {
+    word-break: break-all;
+
+    .field__item {
+      &:before {
+        @include fa-icon;
+        display: inline-block;
+        width: 1.25em;
+        margin-right: 0.3em;
+        content: '\f015';
+        text-align: center;
+      }
+
+      &.url--facebook {
+        &:before {
+          @include fa-icon-brand;
+          content: '\f09a';
+        }
+      }
+
+      &.url--github {
+        &:before {
+          @include fa-icon-brand;
+          content: '\f09b';
+        }
+      }
+
+      &.url--twitter {
+        &:before {
+          @include fa-icon-brand;
+          content: '\f099';
+        }
+      }
+    }
+  }
+}

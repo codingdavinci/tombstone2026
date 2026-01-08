@@ -1,0 +1,23 @@
+{#
+/**
+ * @see paragraph.html.twig
+ */
+#}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished',
+    content.field_sync_height['#items'].value ? 'box-group--sync-height',
+    'box--width-' ~ content.field_width['#items'].value,
+    'container',
+  ]
+%}
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {% block content %}
+      {{ content.field_boxes }}
+    {% endblock %}
+  </div>
+{% endblock paragraph %}

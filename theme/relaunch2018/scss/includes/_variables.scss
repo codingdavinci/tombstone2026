@@ -1,0 +1,58 @@
+$background-color: #f5f5f5;
+$blue: #4495a7;
+$gray: #333333;
+$gray-2: #dcdcdc;
+$gray-3: #c4c4c4;
+$gray-4: #a2a2a2;
+$gray-5: #828282;
+$green: #1bbd7d;
+$green-light: #d8f1ec;
+$green-dark: #0a8856;
+$green-light-2: #c6e4dd;
+$green-light-3: #89e4c3;
+$green-light-4: #92c3c2;
+$green-blue: #4495a7;
+$green-footer: #92c3c2;
+$red: #fd665c;
+$red-light: #fcd9c8;
+
+$navbar-height: 45px;
+$tiled-header-height: 915px;
+
+$font-family-sans-serif: 'Barlow', sans-serif;
+$font-family-base: $font-family-sans-serif;
+$font-family-icons: 'cdv_icons';
+
+$rfs-base-font-size: 16px;
+$rfs-font-size-unit: px;
+
+$font-weight-light: 200;
+$font-weight-normal: 400;
+$font-weight-semi-bold: 500;
+$font-weight-bold: 600;
+
+$card-columns-gap: 30px !default;
+
+$spacer: 8px;
+$spacers: (
+  0: 0,
+  1: ($spacer),
+  2: ($spacer * 2),
+  3: ($spacer * 3),
+  4: ($spacer * 4),
+  5: ($spacer * 5),
+  6: ($spacer * 6),
+  7: ($spacer * 7),
+  8: ($spacer * 8),
+  9: ($spacer * 9),
+  10: ($spacer * 10),
+);
+
+$line-height-base: 1.4;
+
+$link-color:                              $green;
+$link-decoration:                         none;
+$link-hover-color:                        $green;
+$link-hover-decoration:                   underline;
+
+$ie: 'screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none)';

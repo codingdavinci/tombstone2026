@@ -1,0 +1,22 @@
+.pager {
+  margin-top: map_get($spacers, 4);
+
+  .pager__items {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+
+    .pager__item {
+      a {
+        @include greenLink;
+      }
+
+      &.is-active {
+        a {
+          @include link-underline;
+          color: $green-dark;
+        }
+      }
+    }
+  }
+}

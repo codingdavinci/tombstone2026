@@ -1,0 +1,413 @@
+.page-node-type-data-set,
+.page-node-type-project {
+  .region-content {
+    padding-top: 0;
+  }
+}
+
+.node--type-data-set,
+.node--type-project {
+  &.node--view-mode-full {
+    .article__header {
+      color: $white;
+      background-color: $green;
+
+      > .row {
+        @include media-breakpoint-up(lg) {
+          min-height: 480px;
+        }
+      }
+
+      .article__header__left-column {
+        padding-top: map_get($spacers, 6) + $navbar-height;
+        padding-bottom: map_get($spacers, 6);
+
+        h1 {
+          color: $white;
+        }
+      }
+
+      .article__header__image {
+        position: relative;
+        height: 100%;
+        padding-top: map_get($spacers, 6) + $navbar-height;
+        padding-bottom: map_get($spacers, 6);
+
+        .field--awards {
+          @include font-size(14px);
+          position: absolute;
+          top: map_get($spacers, 4) + $navbar-height;
+          right: 0;
+          padding: 6px map_get($spacers, 2);
+          color: $white;
+          background: $blue;
+        }
+
+        .field--name-field-attributed-image,
+        .field--name-field-project-image {
+          width: 100%;
+          height: 100%;
+
+          .paragraph--type--attributed-image,
+          .paragraph--type--project-image {
+            display: inline-flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+
+            .field--name-field-inline-image {
+              overflow: hidden;
+              width: 100%;
+              height: 100%;
+
+              img {
+                @include media-breakpoint-up(lg) {
+                  width: auto;
+                  max-width: none;
+                  height: 100%;
+                }
+              }
+            }
+
+            .paragraph--type--attributed-image--attribution,
+            .paragraph--type--project-image--attribution {
+              width: 100%;
+              padding: map_get($spacers, 1) * 0.5 map_get($spacers, 2) 0;
+              text-align: center;
+              color: $white;
+
+              a {
+                @include link-underline;
+                color: $white;
+              }
+
+              @include media-breakpoint-up(lg) {
+                padding-left: 0;
+                text-align: left;
+              }
+            }
+
+            @include media-breakpoint-up(lg) {
+              width: auto;
+            }
+          }
+        }
+      }
+    }
+
+    .project__tags {
+      display: inline-block;
+      padding-top: map_get($spacers, 3);
+
+      > * {
+        display: inline-block;
+        vertical-align: bottom;
+
+        .field__item {
+          display: inline-block;
+        }
+      }
+
+      & + .project__tags {
+        padding-top: 0;
+      }
+
+      &:last-child {
+        padding-bottom: map_get($spacers, 2);
+      }
+    }
+
+    .article--content-container {
+      .node__content {
+        > * {
+          margin-bottom: map_get($spacers, 10);
+        }
+
+        .data-set--badges {
+          > * {
+            margin-bottom: map_get($spacers, 4);
+          }
+        }
+
+        fieldset {
+          &:not(.object-type) {
+            padding: map_get($spacers, 2) map_get($spacers, 3) map_get($spacers, 3) map_get($spacers, 3);
+            border: 1px solid $green;
+
+            legend {
+              position: relative;
+              width: auto;
+              margin: 0 0 0 -2.5rem;
+              padding: 0 0.5em;
+              color: $green;
+
+              .fieldset-legend {
+                position: absolute;
+                bottom: -0.3em;
+                padding-right: 0.25em;
+                white-space: nowrap;
+                background: $background-color;
+              }
+            }
+          }
+
+          a {
+            @include link-underline;
+          }
+
+          .field__item:not(.badge) {
+            @include font-size(16px);
+          }
+
+          .field--name-field-media-count,
+          .field--name-field-objects-count {
+            display: inline-block;
+          }
+
+          .field--name-field-access-mode,
+          .field--name-field-controlled-vocabularies,
+          .field--name-field-file-types,
+          .field--name-field-has-geo-references,
+          .field--name-field-license-code,
+          .field--name-field-license-media,
+          .field--name-field-links,
+          .field--name-field-metadata-format,
+          .field--name-field-metadata-license,
+          .field--name-field-metadata-standards {
+            margin-bottom: map_get($spacers, 3);
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+
+            &:not(.field--name-field-links) {
+              .field__items {
+                .field__item {
+                  display: inline-block;
+                  margin-bottom: map_get($spacers, 1);
+                }
+              }
+            }
+          }
+
+          .field--name-field-license-media {
+            .field {
+              margin-bottom: 0;
+            }
+          }
+
+          .field--name-field-file-types {
+            margin-top: map_get($spacers, 3);
+          }
+
+          .field--name-field-media-filesize {
+            display: inline-block;
+          }
+        }
+
+        .group--team {
+          .field--name-field-team-members {
+            > .field__item {
+              margin-bottom: map_get($spacers, 3);
+
+              &:last-child {
+                margin-bottom: 0;
+              }
+            }
+          }
+        }
+
+        .group--data-sets,
+        .view-projects.view-display-id-block_2 {
+          margin: 0;
+
+          .field--name-field-datasets,
+          .view-content {
+            > .field__item,
+            > .views-row {
+              margin-bottom: map_get($spacers, 3);
+
+              &:last-child {
+                margin-bottom: 0;
+              }
+            }
+
+            article {
+              margin-top: map_get($spacers, 3);
+              margin-bottom: map_get($spacers, 3);
+
+              &:first-child {
+                margin-top: 0;
+              }
+
+              &:last-child {
+                margin-bottom: 0;
+              }
+
+              .field--name-field-attributed-image {
+                img {
+                  @include img-fluid;
+                }
+              }
+
+              h3 {
+                margin-bottom: map_get($spacers, 3);
+                color: $gray;
+
+                a {
+                  @include grayLink;
+                  text-decoration: none;
+                }
+              }
+
+              .node__content {
+                .field {
+                  margin-bottom: 0;
+
+                  &.field--name-field-short-description {
+                    margin-bottom: map_get($spacers, 3);
+                  }
+
+                  &.field--institution-name {
+                    margin-bottom: map_get($spacers, 2);
+                  }
+                }
+
+                .field--name-field-short-description {
+                  font-weight: $font-weight-normal;
+                }
+              }
+            }
+          }
+
+          .field--name-field-other-datasets {
+            margin-top: map_get($spacers, 3);
+          }
+        }
+
+        .view-projects.view-display-id-block_2 {
+          article {
+            .field--name-field-attributed-image {
+              margin-bottom: 0;
+
+              .field {
+                margin-bottom: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.node--view-mode-teaser {
+    @include boxShadow;
+    width: 100%;
+    height: 100%;
+    background-color: $white;
+
+    .card-img {
+      .field--awards {
+        @include font-size(12px);
+        position: absolute;
+        top: map_get($spacers, 2);
+        right: 0;
+        padding: 0 12px;
+        color: $white;
+        background: $blue;
+        
+        a {
+            color: $white;
+            &:hover {
+                color: $white;
+            }
+            text-decoration: none;
+        }
+      }
+      
+      .vocabulary-licenses {
+        @include font-size(12px);
+        position: absolute;
+        top: map_get($spacers, 2);
+        right: 0;
+        padding: 0 18px;
+        color: $white;
+        background: $blue;
+        
+        a {
+            color: $white;
+            &:hover {
+                color: $white;
+            }
+            text-decoration: none;
+        }
+      }
+      
+      .field--name-field-author {
+          visibility: hidden;
+      }
+
+      .paragraph--type--attributed-image--attribution {
+          display: none;
+      }
+
+      img {
+        @include img-fluid;
+      }
+    }
+
+    .card-body {
+      .card-title {
+        @include font-size(20px);
+        margin-bottom: map_get($spacers, 1) !important;
+        word-break: break-word;
+
+        a {
+          color: $gray;
+        }
+      }
+
+      .node__content {
+        @include font-size(16px);
+
+        .field {
+          &.field--institution-name,
+          &.field--name-field-short-description {
+            margin-bottom: map_get($spacers, 2);
+          }
+        }
+      }
+    }
+
+    .field--name-field-event {
+      @include tag-list;
+    }
+  }
+
+  fieldset.object-type {
+    margin: 0;
+
+    legend {
+      display: none;
+    }
+
+    ul {
+      display: inline;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+
+      li {
+        display: inline;
+      }
+    }
+  }
+
+  .field {
+    .field__label {
+      @include font-size(14px);
+      margin-bottom: map_get($spacers, 1);
+      font-weight: $font-weight-normal;
+    }
+  }
+}

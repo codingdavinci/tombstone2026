@@ -1,0 +1,56 @@
+.language-switcher-language-url {
+  display: flex;
+  user-select: none;
+  color: $gray-3;
+  font-size: 1.2rem;
+
+  ul {
+    margin: 0 0.75rem 0 0;
+    padding-left: 0;
+
+    li {
+      display: inline;
+      margin-right: 0.3em;
+
+      span {
+        @include curlyBraces($gray-3);
+        display: inline-block;
+        padding: 0 0.3rem 0.2rem 0.3rem;
+      }
+
+      a {
+        @include border-radius(4px);
+        @include curlyBraces($white);
+        padding: 0 0.3rem 0.1rem 0.3rem;
+        color: $white;
+        background-color: transparent;
+
+        &:hover {
+          color: $white;
+        }
+      }
+
+      &.is-active {
+        color: $white;
+
+        a {
+          @include curlyBraces($black);
+          color: $black;
+          background-color: $white;
+        }
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(sm) {
+    font-size: 1.2rem;
+  }
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.5rem;
+  }
+}

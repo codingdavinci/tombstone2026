@@ -1,0 +1,16 @@
+.node--type-press-kit {
+  h3 {
+    margin-bottom: 32px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $green;
+  }
+
+  p {
+    .icon-mail-1 {
+      font-weight: $font-weight-normal;
+    }
+    .spamspan {
+      font-weight: $font-weight-normal;
+    }
+  }
+}

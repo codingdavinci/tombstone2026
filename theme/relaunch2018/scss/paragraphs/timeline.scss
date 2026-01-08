@@ -1,0 +1,113 @@
+
+.paragraph--type--timeline {
+  position: relative;
+
+  .field--name-field-timeline-items {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-auto-flow: row;
+
+    > .field__item {
+      @include boxShadow;
+
+      .paragraph--type--timeline-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        padding: map_get($spacers, 3) map_get($spacers, 3) map_get($spacers, 2) map_get($spacers, 3);
+
+        .field--name-field-heading {
+          padding-bottom: map_get($spacers, 4);
+
+          h2 {
+            @include font-size(20px);
+            margin-bottom: 0;
+            color: $gray;
+          }
+        }
+
+        .field--name-field-text {
+          p {
+            @include font-size(16px);
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+
+        @include media-breakpoint-up(xl) {
+          padding: map_get($spacers, 4) map_get($spacers, 4) map_get($spacers, 3) map_get($spacers, 4);
+        }
+      }
+
+      .paragraph--type--timeline-item--footer {
+        padding-top: map_get($spacers, 6);
+
+        p {
+          @include font-size(16px);
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      &:nth-child(1) {
+        background-color: $green-light;
+      }
+
+      &:nth-child(2) {
+        background-color: $green-light-2;
+      }
+
+      &:nth-child(3) {
+        background-color: $green-light-3;
+      }
+
+      &:nth-child(4) {
+        background-color: $green-light-4;
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      &.field--name-field-timeline-items--grid-2 {
+        grid-auto-columns: 23%;
+        grid-auto-flow: column;
+        grid-gap: 4%;
+      }
+
+      &.field--name-field-timeline-items--grid-3 {
+        grid-auto-columns: 32%;
+        grid-auto-flow: column;
+        grid-gap: 2%;
+
+        @include media-breakpoint-up(lg) {
+          grid-auto-columns: 30%;
+          grid-gap: 5%;
+        }
+      }
+
+      &.field--name-field-timeline-items--grid-4 {
+        @include media-breakpoint-up(md) {
+          grid-auto-columns: 23%;
+          grid-auto-flow: column;
+          grid-gap: 2.66%;
+        }
+      }
+    }
+  }
+
+  .paragraph--type--timeline--line {
+    position: absolute;
+    top: 33%;
+    width: 80%;
+
+    hr {
+      border: none;
+      border-bottom: 1px solid $gray;
+    }
+  }
+}

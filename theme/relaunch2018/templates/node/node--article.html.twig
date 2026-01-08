@@ -1,0 +1,45 @@
+{#
+/**
+ * @see node.html.twig
+ */
+#}
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+{{ attach_library('classy/node') }}
+<article{{ attributes.addClass(classes) }}>
+  {{ content.field_image }}
+
+  <div class="mt-3 mb-2">
+    {{ content.field_tags }}
+  </div>
+  <hr class="separator">
+
+  <div class="container">
+    {% if display_submitted %}
+      <div class="row">
+        <div class="col-12">
+          <div{{ author_attributes.addClass('node__submitted').addClass('mb-4') }}>
+            {{ node.createdtime|format_date('date_short') }}, {{ author_name }}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    {{ title_prefix }}
+      <h1{{ title_attributes }}>{{ label }}</h1>
+    {{ title_suffix }}
+  </div>
+
+  <div{{ content_attributes.addClass('node__content') }}>
+    {{ content|without('field_tags')|without('field_image') }}
+  </div>
+
+</article>

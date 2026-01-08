@@ -1,0 +1,49 @@
+
+.view.view-press-kits {
+  &.view-display-id-page_1 {
+    margin-top: map_get($spacers, 10);
+  }
+
+  .view-content {
+    .card-columns {
+      column-count: 1;
+
+      .card {
+        display: inline-block;
+        margin-bottom: map_get($spacers, 7);
+        background-color: transparent;
+        box-shadow: none;
+
+        .field--name-field-files {
+          nargin-top: 24px;
+        }
+      }
+
+      @include media-breakpoint-up(md) {
+        column-count: 2;
+      }
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .attachment-after {
+    .view-press-kits {
+      .item-list {
+        margin-bottom: map_get($spacers, 7);
+      }
+
+      ul {
+        list-style-type: none;
+      }
+
+      .views-field-field-date {
+        @include media-breakpoint-up(sm) {
+          text-align: right;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{#
+/**
+ * @see views-view-fields.html.twig
+ */
+#}
+<div class="row">
+{% for field in fields -%}
+  {{ field.separator }}
+  {%- if field.wrapper_element -%}
+    {%- if field.label == 'Datum' -%}
+      <{{ field.wrapper_element }}{{ field.wrapper_attributes.addClass(['col-sm-4 col-md-4 col-lg-3']) }}>
+    {%- else %}
+      <{{ field.wrapper_element }}{{ field.wrapper_attributes.addClass(['col-sm-8 col-md-8 col-lg-9']) }}>
+    {%- endif %}
+  {%- endif %}
+  {%- if field.element_type -%}
+    <{{ field.element_type }}{{ field.element_attributes }}>{{ field.content }}</{{ field.element_type }}>
+  {%- else -%}
+    {{ field.content }}
+  {%- endif %}
+  {%- if field.wrapper_element -%}
+    </{{ field.wrapper_element }}>
+  {%- endif %}
+{%- endfor %}
+</div>

@@ -1,0 +1,26 @@
+{#
+/**
+ * @see paragraph.html.twig
+ */
+#}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished',
+  ]
+%}
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {% block content %}
+      <div class="container">
+        {{ content.field_group_name }}
+      </div>
+      <hr class="separator">
+      <div class="container">
+        {{ content.field_logos }}
+      </div>
+    {% endblock %}
+  </div>
+{% endblock paragraph %}

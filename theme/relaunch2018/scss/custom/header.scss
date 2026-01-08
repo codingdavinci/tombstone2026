@@ -1,0 +1,272 @@
+/**
+ * @file
+ * Tiled header styles.
+ * Original styles:
+ * https://github.com/codingdavinci/codingdavinci.de/blob/gh-pages/css/codingdavinci.scss
+ */
+.header--tiles {
+  width: 100%;
+
+  .header--tiles--container {
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    height: $tiled-header-height;
+    background: -157px -5px url('../img/header/tiles_frontpage_static.jpg');
+    background-size: 905px;
+
+    .header--tiles--overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.5;
+      background: linear-gradient(180deg, rgba(101, 255, 172, 0.21) 0%, rgba(255, 197, 101, 0.38) 76.61%);
+      mix-blend-mode: multiply;
+    }
+
+    .header--tiles--content {
+      position: relative;
+      padding-top: 150px;
+      pointer-events: none;
+
+      .header--tile--logo {
+        @include boxShadow;
+        @include font-size(24px);
+        position: relative;
+        width: 600px;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 3rem 3rem 2rem 3rem;
+        color: $white;
+        background: $green;
+        font-size: 1.2rem;
+
+        p {
+          color: $white;
+        }
+
+        .header--title--logo--image {
+          margin-bottom: map_get($spacers, 5);
+
+          img {
+            width: 100%;
+            height: auto;
+          }
+
+          @include media-breakpoint-up(md) {
+            width: 70%;
+          }
+        }
+
+        .header--title--logo--text {
+          p {
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+          @media #{$ie} {
+            max-width: 100%;
+          }
+        }
+
+        @include media-breakpoint-up(md) {
+          font-size: 1.4rem;
+        }
+
+        @include media-breakpoint-up(lg) {
+          padding: 4rem 4rem 3rem 4rem;
+          font-size: 1.5rem;
+        }
+      }
+
+      @include media-breakpoint-up(md) {
+        padding-top: 200px;
+      }
+    }
+
+    .tiles {
+      position: absolute;
+      z-index: -1;
+      transform: translate3d(0, 0, 0);
+
+      .header-tile,
+      .front,
+      .back {
+        width: 210px;
+        height: 210px;
+      }
+
+      .header-tile {
+        position: absolute;
+        z-index: 5;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        transform: rotate(45deg);
+        perspective: 1000px;
+
+        &.hover {
+          .flipper {
+            transform: rotateY(180deg);
+          }
+        }
+
+        .flipper {
+          position: relative;
+          transition: all 0.6s ease-in;
+          transform-style: preserve-3d;
+
+          .front,
+          .back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: scale(1.04);
+            background-repeat: no-repeat;
+            background-position: center center;
+            backface-visibility: hidden;
+          }
+
+          .front {
+            z-index: 10;
+            background: url('../img/header/tiles_frontpage.jpg') no-repeat;
+          }
+
+          .back {
+            z-index: 9;
+            transform: scale(1.04) rotateY(180deg);
+            background: url('../img/header/tiles_code.jpg') no-repeat;
+            background-size: 1260px;
+          }
+
+          /* stylelint-disable order/order */
+          $tile-size: 220px;
+          $i: 0;
+          @for $row from 0 through 6 {
+            @for $col from 0 through 5 {
+              .cdv-tile-#{$i} { background-position: ($col * $tile-size * -1) ($row * $tile-size * -1); }
+              $i: $i + 1;
+            }
+          }
+
+          $tile-size: 210px;
+          $i: 0;
+          @for $row from 0 through 3 {
+            @for $col from 0 through 5 {
+              .code-tile-#{$i} { background-position: ($col * $tile-size * -1) ($row * $tile-size * -1); }
+              $i: $i + 1;
+            }
+          }
+          /* stylelint-enable order/order */
+        }
+      }
+    }
+  }
+}
+
+.page-node-type-event {
+  .header--tiles {
+    .header--tiles--container {
+      background: 190px -19px url('../img/header/tiles_event_static.jpg');
+      background-size: 1188px;
+
+      .header--tiles--overlay {
+        mix-blend-mode: multiply;
+        opacity: 0.3;
+      }
+
+      .tiles {
+
+        .header-tile,
+        .front,
+        .back {
+          width: 280px;
+          height: 280px;
+        }
+
+        .header-tile {
+          .flipper {
+
+            .front {
+              background: url('../img/header/tiles_event_default.jpg') no-repeat;
+            }
+
+            .back {
+              background-size: auto;
+            }
+
+            /* stylelint-disable order/order */
+            $tile-size: 400px;
+
+            $i: 0;
+            @for $row from 0 through 4 {
+              @for $col from 0 through 3 {
+                .cdv-tile-#{$i} { background-position: ($col * $tile-size * -1) ($row * $tile-size * -1); }
+                $i: $i + 1;
+              }
+            }
+
+            $i: 0;
+            @for $row from 0 through 3 {
+              @for $col from 0 through 5 {
+                .code-tile-#{$i} { background-position: ($col * $tile-size * -1) ($row * $tile-size * -1); }
+                $i: $i + 1;
+              }
+            }
+            /* stylelint-enable order/order */
+          }
+        }
+      }
+
+      .header--tiles--content {
+        text-align: center;
+
+        .header--tile--logo {
+          display: inline-block;
+          width: auto;
+          padding: 1.5rem 1.5rem 1.3rem 1.5rem;
+
+          .header--title--logo--image {
+            width: 80%;
+            margin-bottom: 1rem;
+
+            @include media-breakpoint-up(sm) {
+              width: 60%;
+            }
+          }
+
+          .header--title--logo--text {
+            h1 {
+              margin: 0;
+              text-transform: uppercase;
+              word-wrap: break-word;
+              color: $white;
+              font-size: 2.6rem;
+              font-weight: $font-weight-semi-bold;
+
+              @include media-breakpoint-up(sm) {
+                font-size: 4rem;
+              }
+
+              @include media-breakpoint-up(lg) {
+                font-size: 5rem;
+              }
+            }
+
+            .header--title--logo--text--event-date {
+              margin-top: 0.8rem;
+            }
+          }
+
+          @include media-breakpoint-up(sm) {
+            min-width: 520px;
+          }
+        }
+      }
+    }
+  }
+}

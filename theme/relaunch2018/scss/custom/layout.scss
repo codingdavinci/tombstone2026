@@ -1,0 +1,304 @@
+html {
+  height: 100%;
+}
+
+body {
+  background-color: $background-color;
+}
+
+.dialog-off-canvas-main-canvas {
+  // Interferes with the header tiles tilt effect.
+  height: 0;
+}
+
+header:not(.header--tiles) {
+  .region-header {
+    color: $white;
+    background-color: $green;
+
+    h1,
+    p {
+      color: $white;
+    }
+
+    .header--content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      padding: $grid-gutter-width * 0.5;
+      padding-top: $grid-gutter-width * 0.5 + $navbar-height;
+
+      :last-child {
+        margin-bottom: 0;
+      }
+
+      .page-title {
+        @include font-size(36px);
+
+        @include media-breakpoint-up(md) {
+          @include font-size(48px);
+        }
+      }
+
+      .block-block-content {
+        margin-top: $grid-gutter-width;
+      }
+
+      @include media-breakpoint-up(md) {
+        padding: map_get($spacers, 8) + $navbar-height map_get($spacers, 9) map_get($spacers, 8) map_get($spacers, 9);
+      }
+
+      @include media-breakpoint-up(lg) {
+        padding-right: 0;
+
+        .page-title {
+          padding-right: map_get($spacers, 9);
+        }
+
+        .block-block-content {
+          width: 50%;
+        }
+      }
+    }
+
+    a {
+      color: $white;
+    }
+  }
+}
+
+.page-node-type-page {
+  header {
+    .region-header {
+      .header--content {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.layout-container--wrapper {
+  background-color: $background-color;
+
+  header {
+    .region-admin-tabs {
+      margin-top: $navbar-height;
+
+      a {
+        color: $green;
+      }
+    }
+  }
+
+  main {
+    .layout-content {
+      .region-admin-tabs {
+        position: relative;
+        z-index: 1;
+      }
+    }
+  }
+
+  &.header-tiles-above {
+    position: relative;
+    top: $tiled-header-height;
+    width: 100%;
+  }
+
+  footer {
+    @include font-size(16px);
+    margin-top: 88px;
+    padding: map_get($spacers, 4) 0 map_get($spacers, 5) 0;
+    letter-spacing: 0.02em;
+    background-color: $green-footer;
+
+    p {
+      color: $white;
+
+      a {
+        font-weight: $font-weight-normal;
+      }
+
+      strong {
+        a {
+          font-weight: $font-weight-bold;
+        }
+      }
+    }
+
+    a {
+      color: $white;
+
+      &:hover {
+        color: $white;
+      }
+
+      &:before {
+        color: $white;
+      }
+
+      &.icon-mail-1 {
+        &:before {
+          margin-left: 0.4em;
+          font-size: 0.7em;
+        }
+      }
+
+      &.spamspan {
+        &:before {
+          margin-left: 0.4em;
+          font-size: 0.7em;
+        }
+      }
+    }
+
+    .logos-container {
+      @include font-size(14px);
+
+      img {
+        opacity: 0.6;
+        mix-blend-mode: multiply;
+      }
+
+      > div {
+        @include media-breakpoint-up(md) {
+          > div {
+            margin: 0 1.5%;
+            padding: 0 15px 15px 15px;
+
+            &:first-child {
+              margin-left: 0;
+            }
+
+            &:last-child {
+              margin-right: 0;
+            }
+
+            &:nth-child(1) {
+              width: 21%;
+            }
+
+            &:nth-child(2) {
+              width: 17%;
+            }
+
+            &:nth-child(3) {
+              width: 15%;
+            }
+
+            &:nth-child(4) {
+              width: 17%;
+            }
+
+            &:nth-child(5) {
+              width: 18%;
+            }
+          }
+        }
+      }
+    }
+
+    .field--name-field-textblock {
+      color: $white;
+
+      h3 {
+        color: $white;
+        font-weight: $font-weight-bold;
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      padding-top: map_get($spacers, 7);
+    }
+  }
+}
+
+.collapsible {
+  legend {
+    @include easeAll;
+    @include font-size(16px);
+    @include link-underline;
+    margin-bottom: map_get($spacers, 2);
+    padding: map_get($spacers, 2) map_get($spacers, 1);
+    cursor: pointer;
+    color: $green;
+    font-weight: $font-weight-bold;
+
+    &:before {
+      @include easeAll;
+      display: inline-block;
+      margin-right: 0.4em;
+      content: '';
+      transform: rotate(90deg);
+      vertical-align: middle;
+      font-family: $font-family-icons;
+    }
+
+    &.collapsed {
+      &:before {
+        transform: rotate(0deg);
+      }
+    }
+  }
+}
+
+.additional-padding--left {
+  @include media-breakpoint-up(lg) {
+    padding-left: 37px;
+  }
+}
+
+.additional-padding--right {
+  @include media-breakpoint-up(lg) {
+    padding-right: 37px;
+  }
+}
+
+.field--name-field-tags {
+  line-height: 16px;
+
+  > .field__items {
+    @include tag-list;
+  }
+}
+
+.field--name-field-event {
+  @include tag-list;
+}
+
+.region-content {
+  padding-top: map_get($spacers, 10);
+
+  .field--name-field-events {
+    h2 {
+      @include font-size(14px);
+      margin-bottom: map_get($spacers, 1);
+      color: $gray;
+    }
+
+    & + hr {
+      margin-top: 0;
+      margin-bottom: 52px;
+      border: 0;
+      border-bottom: 1px solid $green;
+    }
+  }
+}
+
+hr.separator {
+  margin-top: 0;
+  margin-bottom: map_get($spacers, 7);
+  border: 0;
+  border-bottom: 1px solid $green;
+}
+
+ul {
+  &.tabs {
+    li {
+      &:before {
+        display: none;
+      }
+    }
+  }
+}

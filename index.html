@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="de" class="i18n-pending">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coding da Vinci – Startseite</title>
+    <link rel="icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+
+    <!-- Fonts used by the theme (Drupal would normally provide these). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon fonts used by the theme. -->
+    <link rel="stylesheet" href="theme/relaunch2018/lib/cdv_icons/css/cdv_icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+        integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+    <!-- Theme CSS (contains Bootstrap 4 grid + theme styles). -->
+    <link rel="stylesheet" href="theme/relaunch2018/css/global.css">
+    <link rel="stylesheet" href="theme/relaunch2018/css/styles.css">
+
+    <!-- Avoid a flash of the wrong language before i18n.js applies translations. -->
+    <style>
+        html.i18n-pending {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body class="path-frontpage">
+    <a href="#main-content" class="visually-hidden focusable skip-link" data-i18n="skipLink">Zum Inhalt springen</a>
+
+    <!-- Drupal wraps everything in this container; some theme CSS expects it. -->
+    <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+        <!-- Frontpage header tiles (from templates/page/header-front.html.twig). -->
+        <header class="header--tiles">
+            <div class="header--tiles--container">
+                <div class="header--tiles--overlay"></div>
+                <div class="tiles"></div>
+                <div class="container header--tiles--content">
+                    <div class="header--tile--logo">
+                        <div class="d-flex h-100 flex-column justify-content-between align-items-center">
+                            <div class="header--title--logo--image">
+                                <img alt="Coding da Vinci" src="theme/relaunch2018/img/CDV_logo.svg">
+                            </div>
+                            <div class="header--title--logo--text d-flex flex-column justify-content-end text-left">
+                                <h1 class="sr-only">Coding da Vinci</h1>
+
+                                <!-- This is what Drupal would render into the 'header' region on the frontpage. -->
+                                <div class="region region-header">
+                                    <div class="header--content">
+                                        <p data-i18n="headerIntro">
+                                            Der erste deutsche Hackathon für offene Kulturdaten. Hier entfalteten von
+                                            2014 bis 2022 innovative Anwendungen das kreative Potenzial in unserem
+                                            digitalen Kulturerbe.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Primary menu (from templates/menu/menu-main.html.twig). -->
+        <div class="region region-primary-menu">
+            <nav class="navbar fixed-top">
+                <div class="navbar--wrapper">
+                    <div class="navbar--left">
+                        <button class="navbar-toggler collapsed" type="button" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="d-sm-none">
+                            <a href="#">
+                                <img class="menu--main--brand" src="theme/relaunch2018/img/CDV_icon_white.svg"
+                                    alt="Coding da Vinci">
+                            </a>
+                        </div>
+                        <div class="d-none d-sm-block">
+                            <a href="#">
+                                <img class="menu--main--brand" src="theme/relaunch2018/img/CDV_Logo_Line_white.svg"
+                                    alt="Coding da Vinci">
+                            </a>
+                        </div>
+                    </div>
+
+                    <nav class="language-switcher-language-url" aria-label="Language selector">
+                        <ul>
+                            <li class="de">
+                                <a href="?lang=de" data-lang="de" hreflang="de" lang="de">DE</a>
+                            </li>
+                            <li class="en is-active">
+                                <a href="?lang=en" data-lang="en" hreflang="en" aria-current="page">EN</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Layout wrapper (mirrors templates/page/page.html.twig for the frontpage). -->
+        <div class="layout-container--wrapper header-tiles-above">
+            <main>
+                <a id="main-content" tabindex="-1"></a>
+
+                <div class="layout-content">
+                    <div class="region region-content">
+
+                        <!-- About block. -->
+                        <div id="about" class="sr-only" aria-hidden="true"></div>
+                        <div id="block-block-about" class="block block-block-content">
+                            <div class="field field--name-field-paragraphs pt-0" style="background-color: transparent;">
+                                <div class="field__item" style="margin-top: 0; padding: 0;">
+                                    <div class="container pt-6" style="background-color: #fff;">
+                                        <h2 class="px-4" data-i18n="aboutH2">Was war Coding da Vinci?</h2>
+                                        <div class="row">
+                                            <div class="col-12 px-6">
+                                                <div class="text-formatted">
+                                                    <p data-i18n="aboutP1">
+                                                        Von 2014 bis 2022 vernetzte Coding da Vinci, der
+                                                        Kulturhackathon, Kultur- und Technikwelten miteinander und
+                                                        zeigte, welche überraschenden Möglichkeiten in offenen
+                                                        Kulturdaten stecken. In mehrwöchigen Sprintphasen
+                                                        entwickelten Teams aus Hacker*innen gemeinsam mit
+                                                        Kulturinstitutionen funktionierende Prototypen z.B. für
+                                                        Apps, Webseiten, Datenvisualisierungen, Spiele oder
+                                                        interaktive Installationen, die überraschende und
+                                                        inspirierende Wege zeigen, wie Sammlungsobjekte von
+                                                        Institutionen auf neue Weisen vermittelt und genutzt werden
+                                                        können.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-4">
+                                            <div class="col-12 px-0">
+                                                <div class="embed-responsive embed-responsive-16by9">
+                                                    <iframe class="embed-responsive-item"
+                                                        src="https://www.youtube-nocookie.com/embed/JPm0_xCM1kQ?si=MLbf3_RMhrdr79BR&amp;controls=1"
+                                                        title="YouTube video player"
+                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                        referrerpolicy="strict-origin-when-cross-origin"
+                                                        allowfullscreen></iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layout-content">
+                    <div class="region region-content">
+
+                        <!-- Playbook block (CSS expects this ID/classes on the frontpage). -->
+                        <div id="playbook" class="sr-only" aria-hidden="true"></div>
+                        <div id="block-block-playbook" class="block block-block-content">
+                            <div class="field field--name-field-paragraphs" style="background-color: transparent;">
+                                <div class="field__item" style="margin-top: 0; padding: 0;">
+                                    <div class="container pt-6" style="background-color: #fff;">
+                                        <h2 class="px-4" data-i18n="playbookH2">Das Coding da Vinci-Playbook</h2>
+                                        <div class="row">
+                                            <div class="col-12 px-6 text-formatted">
+                                                <h3 data-i18n="playbookH3">Schritt für Schritt zum eigenen
+                                                    Kultur-Hackathon</h3>
+                                                <p><img alt="Cover des Coding da Vinci-Playbooks"
+                                                        class="img-fluid float-right align-right"
+                                                        data-entity-type="file"
+                                                        data-entity-uuid="9970e32a-0c3d-4b8c-8d94-e35d67b24089"
+                                                        style="margin-left: 1em;" src="img/playbook.webp" width="500"
+                                                        loading="lazy"></p>
+                                                <div data-i18n-html="playbookP1">
+                                                    <p>Coding da Vinci ist zu einer Bewegung für offene Kulturdaten
+                                                        geworden: Werde jetzt ein Teil davon!</p>
+                                                    <p>Mit dem Coding da Vinci-Playbook kannst du eigene
+                                                        Kultur-Hackathons durchführen. Es funktioniert wie ein Kochbuch:
+                                                        Probiere das ganze Menü, einzelne Gänge oder nur bestimmte
+                                                        Zutaten aus – ganz nach deinem Geschmack. Dabei profitierst du
+                                                        von langjähriger Erfahrung aus insgesamt 14 Coding da
+                                                        Vinci-Ausgaben, mit der du Schritt für Schritt durch die
+                                                        Organisation des gesamten Prozesses geführt wirst – von der
+                                                        Bereitstellung der Daten über den kreativen „magic moment“ des
+                                                        Kick-Offs bis zur Präsentation der Ergebnisse.</p>
+                                                    <p>Das Playbook steht unter einer <a
+                                                            href="https://creativecommons.org/licenses/by-sa/4.0/"
+                                                            target="_blank" rel="noopener">Creative Commons BY-SA
+                                                            4.0 Lizenz</a> und kann frei genutzt, weitergegeben und
+                                                        angepasst werden.</p>
+                                                </div>
+                                                <p><a data-i18n="playbookA" class="button button--green mb-3"
+                                                        href="https://www.degruyter.com/document/doi/10.1515/9783111085883/html"
+                                                        target="_blank">Jetzt kostenlos downloaden!</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Footer (based on templates/block/block-footer.html.twig). -->
+            <footer id="footer">
+                <div class="region region-footer">
+                    <div id="block-footer" class="block block-block-content">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <p data-i18n-html="footerP1">Coding da Vinci – Der Kultur-Hackathon wurde zwischen
+                                        2019 und 2022 von der <strong>Kulturstiftung des Bundes</strong> gefördert als
+                                        gemeinsames&nbsp;Projekt der <strong>Deutschen Digitalen Bibliothek</strong>,
+                                        dem <strong>Forschungs- und Kompetenzzentrum Digitalisierung Berlin
+                                            (digiS)</strong>, der <strong>Open Knowledge Foundation Deutschland</strong>
+                                        und <strong>Wikimedia Deutschland</strong>.</p>
+                                </div>
+
+                                <div class="col-12 logos-container">
+                                    <div class="row">
+                                        <div class="col-12 pb-0" data-i18n="fundedBy">Funded by:</div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <div class="col-md-auto mb-5 mb-md-0 text-center">
+                                            <img alt="Kulturstiftung des Bundes" class="img-fluid"
+                                                src="theme/relaunch2018/img/footer/kulturstiftung.png">
+                                        </div>
+                                        <div class="col-md-auto mb-5 mb-md-0 text-center">
+                                            <img alt="Deutsche Digitale Bibliothek" class="img-fluid"
+                                                src="theme/relaunch2018/img/footer/ddb.png">
+                                        </div>
+                                        <div class="col-md-auto mb-5 mb-md-0 text-center">
+                                            <img alt="digiS" class="img-fluid"
+                                                src="theme/relaunch2018/img/footer/digis.png">
+                                        </div>
+                                        <div class="col-md-auto mb-5 mb-md-0 text-center">
+                                            <img alt="Open Knowledge Foundation Deutschland" class="img-fluid"
+                                                src="theme/relaunch2018/img/footer/okfde.png">
+                                        </div>
+                                        <div class="col-md-auto mb-5 mb-md-0 text-center">
+                                            <img alt="Wikimedia Deutschland" class="img-fluid"
+                                                src="theme/relaunch2018/img/footer/wmde.png">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 mt-5">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p>
+                                                <span data-i18n="contactLabel">Kontakt:</span>
+                                                <span class="icon-mail-1 js-email" data-email-user="info"
+                                                    data-email-domain="codingdavinci" data-email-tld="de">info [at]
+                                                    codingdavinci [dot] de</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- JS dependencies used by this static page. -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- Minimal Drupal settings stub for header tiles JS. -->
+    <script>
+        window.drupalSettings = window.drupalSettings || {};
+        window.drupalSettings.relaunch2018 = window.drupalSettings.relaunch2018 || {};
+    </script>
+
+    <!-- FormatJS runtime (ICU message formatting) + translations (DE/EN). -->
+    <script src="https://cdn.jsdelivr.net/npm/intl-messageformat@10/dist/umd/intl-messageformat.min.js" defer></script>
+    <script src="js/i18n.js" defer></script>
+    <script src="js/spamspan.js" defer></script>
+
+    <!-- Theme JS (needed for the animated header tiles). -->
+    <script src="theme/relaunch2018/js/header.js"></script>
+</body>
+
+</html>

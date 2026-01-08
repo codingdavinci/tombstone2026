@@ -1,0 +1,10 @@
+
+.paragraph--type--project-image {
+  display: inline-block;
+
+  .field--name-field-inline-image {
+    img {
+      @include img-fluid;
+    }
+  }
+}

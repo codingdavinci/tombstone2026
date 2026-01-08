@@ -1,0 +1,135 @@
+.page-node-type-article {
+  .region-content {
+    padding-top: 0;
+  }
+}
+
+.node--type-article {
+  .field--name-field-image {
+    .media--view-mode-header {
+      .media--image--header--attribution {
+        display: none;
+      }
+    }
+  }
+
+  .node__submitted {
+    @include font-size(14px);
+    display: inline-block;
+
+    a {
+      @include grayLink;
+    }
+  }
+
+  .paragraph--type--image {
+    margin-top: map_get($spacers, 7);
+    margin-bottom: map_get($spacers, 7);
+  }
+
+  h3 {
+    margin-top: map_get($spacers, 7);
+    color: $gray;
+  }
+
+  &.node--view-mode-related {
+    .article--header-image {
+      padding: 0 $grid-gutter-width * 0.5;
+    }
+
+    .article--content-container {
+      margin-top: map_get($spacers, 2);
+
+      .article--header {
+        .article--date {
+          @include font-size(14px);
+        }
+      }
+    }
+
+    h3 {
+      margin-top: map_get($spacers, 1);
+    }
+
+    a {
+      @include font-size(16px);
+      @include link-underline;
+    }
+
+    @include media-breakpoint-up(md) {
+      .article--content-block {
+        background-color: transparent;
+      }
+    }
+  }
+
+  &.node--view-mode-teaser {
+    padding: $grid-gutter-width $grid-gutter-width * 0.5;
+    background-color: $white;
+
+    .node__submitted {
+      color: $gray-4;
+    }
+
+    hr {
+      float: left;
+      width: 40px;
+      border: none;
+      border-top: 1px solid $green;
+    }
+
+    .field--name-field-tags {
+      display: flex;
+      padding: 0;
+
+      .field__items {
+        .field__item {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    h3 {
+      margin-top: 0;
+    }
+
+    .node__content {
+      @include font-size(16px);
+
+      .field--name-field-paragraphs {
+        .field__item {
+          margin-bottom: 0;
+
+          .paragraph--type--text {
+            padding: 0;
+
+            .article--content-block {
+              background-color: transparent;
+
+              > * {
+                padding: 0;
+              }
+
+              p {
+                color: $gray;
+              }
+            }
+          }
+        }
+      }
+
+      .node__links {
+        .links {
+          li {
+            padding-left: 0;
+
+            a {
+              @include greenLink;
+              @include link-underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+input {
+  max-width: 100%;
+  padding: map_get($spacers, 1) map_get($spacers, 2);
+  color: $gray;
+  border: 0;
+
+  &::-webkit-input-placeholder {
+    color: $gray-5;
+  }
+  &::-moz-placeholder {
+    color: $gray-5;
+  }
+  &:-ms-input-placeholder {
+    color: $gray-5;
+  }
+
+  &[type='submit'] {
+    @include easeAll;
+    padding-right: map_get($spacers, 10);
+    padding-left: map_get($spacers, 10);
+    color: $white;
+    background-color: $green;
+
+    &:hover {
+      background-color: $green-dark;
+    }
+  }
+}
+
+ul.ui-autocomplete {
+  li.ui-menu-item {
+    a {
+      @include font-size(14px);
+      display: block;
+
+      &.ui-state-active {
+        text-decoration: none;
+        color: $white;
+        background-color: $green;
+      }
+    }
+  }
+}

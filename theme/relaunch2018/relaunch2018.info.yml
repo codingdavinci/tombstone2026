@@ -1,0 +1,26 @@
+name: Relaunch 2018
+type: theme
+description: 'Theme for Coding Da Vinci.'
+core_version_requirement: ^8.8 || ^9 || ^10
+libraries:
+  - relaunch2018/global-css
+  - relaunch2018/global-js
+base theme: classy
+regions:
+  admin_tabs: 'Admin tabs'
+  header: 'Header'
+  primary_menu: 'Primary menu'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  highlighted: 'Highlighted'
+  breadcrumb: 'Breadcrumb'
+  content: 'Content'
+  footer: 'Footer'
+libraries-override:
+  classy/base:
+    css:
+      component:
+        css/components/menu.css: false
+ckeditor_stylesheets:
+  - css/styles.css
+  - lib/cdv_icons/css/cdv_icons.css

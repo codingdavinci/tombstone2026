@@ -1,0 +1,73 @@
+.eu-cookie-compliance-banner {
+  .eu-cookie-compliance-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 100%;
+    margin: 0;
+
+    p,
+    h2,
+    button {
+      @include font-size(16px);
+    }
+
+    p {
+      font-weight: $font-weight-normal;
+    }
+
+    button {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+    }
+  }
+
+  .eu-cookie-compliance-message {
+    max-width: 100%;
+    margin-top: 0;
+    padding: map_get($spacers, 2) map_get($spacers, 4);
+  }
+
+  .eu-cookie-compliance-buttons {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    button {
+      min-height: map_get($spacers, 5);
+      margin: 0;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .agree-button {
+      color: $gray;
+      background: $white;
+      font-weight: $font-weight-bold;
+    }
+
+    .decline-button {
+      color: $white;
+      border: none;
+      border-radius: 0;
+      background: $gray;
+      box-shadow: none;
+      text-shadow: none;
+      font-weight: $font-weight-normal;
+    }
+
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+      margin-left: 1rem;
+    }
+  }
+}

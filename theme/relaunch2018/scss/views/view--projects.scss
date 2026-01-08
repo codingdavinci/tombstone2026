@@ -1,0 +1,89 @@
+
+.view-projects {
+  &.view-display-id-page_1 {
+    .view-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-auto-rows: 1fr;
+      grid-gap: $grid-gutter-width;
+      align-items: stretch;
+      justify-items: stretch;
+
+      @include media-breakpoint-up(sm) {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      @include media-breakpoint-up(lg) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .views-row {
+        min-width: 0;
+      }
+      .card {
+        margin-bottom: 30px;
+      }
+
+      img{
+        height: 192px;
+      }
+    }
+  }
+
+  &.view-display-id-block_3,
+  &.view-display-id-block_4 {
+    .view-header {
+      p {
+        &:last-child {
+          margin-bottom: map_get($spacers, 2);
+        }
+      }
+
+      .more-link {
+        a {
+          display: inline-block;
+          padding: 0.6em 1.4em;
+          color: $white;
+          background-color: $green;
+        }
+      }
+    }
+
+    .view-horizontal-navigation {
+      display: none;
+
+      @include media-breakpoint-up(sm) {
+        display: block;
+
+        @media #{$ie} {
+          display: none;
+        }
+      }
+    }
+
+    .view-content {
+      .views-row {
+        padding: $grid-gutter-width * 0.5;
+      }
+
+      @include media-breakpoint-up(sm) {
+        position: relative;
+        display: grid;
+        grid-auto-columns: 36%;
+        grid-auto-flow: column;
+        width: 100%;
+      }
+
+      @include media-breakpoint-up(md) {
+        grid-auto-columns: 50%;
+      }
+
+      @include media-breakpoint-up(lg) {
+        grid-auto-columns: 33.33%;
+      }
+
+      @include media-breakpoint-up(xl) {
+        grid-auto-columns: 25%;
+      }
+    }
+  }
+}

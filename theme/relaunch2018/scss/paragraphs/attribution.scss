@@ -1,0 +1,31 @@
+
+.paragraph--type--attribution {
+  a {
+    @include link-underline;
+  }
+
+  > .field {
+    &:first-child {
+      @include media-breakpoint-up(sm) {
+        margin-right: map_get($spacers, 2);
+      }
+    }
+  }
+
+  .field--name-field-license {
+    display: inline;
+    margin-right: 0;
+
+    .taxonomy-term {
+      display: inline;
+    }
+  }
+
+  .field--name-field-author {
+    display: inline;
+  }
+
+  @include media-breakpoint-up(sm) {
+    display: flex;
+  }
+}

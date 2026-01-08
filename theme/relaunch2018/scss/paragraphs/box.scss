@@ -1,0 +1,61 @@
+
+.paragraph--type--box,
+.paragraph--type--box-group-box {
+  .box--container {
+    width: 100%;
+    margin: 0 auto;
+
+    @each $width in 25 33 50 67 {
+      &.box--width-#{$width} {
+        @include boxWidth($width);
+      }
+    }
+  }
+
+  .card {
+    @include boxShadow;
+    background-color: $white;
+
+    .card-img-top {
+      img {
+        @include border-bottom-radius(0);
+      }
+    }
+
+    .card-body {
+      .field--name-field-text {
+        h2 {
+          @include font-size(20px);
+          margin-bottom: map_get($spacers, 4);
+          color: $gray;
+        }
+
+        p {
+          &:last-child {
+            margin-bottom: 0;
+
+            .button {
+              &:last-child {
+                display: inline-block;
+                margin-bottom: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .card-footer {
+      border-top: none;
+      background-color: $white;
+
+      .field--name-field-footer {
+        p {
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
