@@ -50,9 +50,23 @@
     }
   };
 
+  function getIntlMessageFormatCtor() {
+    var g = typeof globalThis !== "undefined" ? globalThis : window;
+    var imf = g && g.IntlMessageFormat;
+
+    // Common cases:
+    // - UMD assigns the constructor directly: window.IntlMessageFormat
+    // - UMD assigns an object with a constructor property
+    // - Some bundlers expose default export
+    if (typeof imf === "function") return imf;
+    if (imf && typeof imf.IntlMessageFormat === "function") return imf.IntlMessageFormat;
+    if (imf && typeof imf.default === "function") return imf.default;
+
+    return null;
+  }
+
   function hasFormatJs() {
-    // Loaded via CDN as UMD: window.IntlMessageFormat
-    return typeof window.IntlMessageFormat === "function";
+    return !!getIntlMessageFormatCtor();
   }
 
   function formatMessage(locale, key, values) {
@@ -64,8 +78,10 @@
     if (!hasFormatJs()) return String(msg);
 
     try {
-      // eslint-disable-next-line no-undef
-      var formatter = new window.IntlMessageFormat(String(msg), locale);
+      var IntlMessageFormatCtor = getIntlMessageFormatCtor();
+      if (!IntlMessageFormatCtor) return String(msg);
+
+      var formatter = new IntlMessageFormatCtor(String(msg), locale);
       return formatter.format(values || {});
     } catch (e) {
       return String(msg);
