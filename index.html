@@ -27,6 +27,13 @@
         html.i18n-pending {
             visibility: hidden;
         }
+
+        /* Burger menu is intentionally inert on this static page. */
+        .navbar .navbar-toggler,
+        .navbar .navbar-toggler:hover,
+        .navbar .navbar-toggler:focus {
+            cursor: not-allowed !important;
+        }
     </style>
 </head>
 
@@ -228,24 +235,33 @@
                                     </div>
                                     <div class="row align-items-center">
                                         <div class="col-md-auto mb-5 mb-md-0 text-center">
-                                            <img alt="Kulturstiftung des Bundes" class="img-fluid"
-                                                src="theme/relaunch2018/img/footer/kulturstiftung.png">
+                                            <a href="https://www.kulturstiftung-des-bundes.de/" target="_blank" rel="noopener" aria-label="Kulturstiftung des Bundes (öffnet in neuem Tab)">
+                                                <img alt="Kulturstiftung des Bundes" class="img-fluid"
+                                                    src="theme/relaunch2018/img/footer/kulturstiftung.png">
+                                            </a>
                                         </div>
                                         <div class="col-md-auto mb-5 mb-md-0 text-center">
-                                            <img alt="Deutsche Digitale Bibliothek" class="img-fluid"
-                                                src="theme/relaunch2018/img/footer/ddb.png">
+                                            <a href="https://www.deutsche-digitale-bibliothek.de/" target="_blank" rel="noopener" aria-label="Deutsche Digitale Bibliothek (öffnet in neuem Tab)">
+                                                <img alt="Deutsche Digitale Bibliothek" class="img-fluid"
+                                                    src="theme/relaunch2018/img/footer/ddb.png">
+                                            </a>
                                         </div>
                                         <div class="col-md-auto mb-5 mb-md-0 text-center">
-                                            <img alt="digiS" class="img-fluid"
-                                                src="theme/relaunch2018/img/footer/digis.png">
+                                            <a href="https://www.digis-berlin.de/" target="_blank" rel="noopener" aria-label="digiS (öffnet in neuem Tab)">
+                                                <img alt="digiS" class="img-fluid" src="theme/relaunch2018/img/footer/digis.png">
+                                            </a>
                                         </div>
                                         <div class="col-md-auto mb-5 mb-md-0 text-center">
-                                            <img alt="Open Knowledge Foundation Deutschland" class="img-fluid"
-                                                src="theme/relaunch2018/img/footer/okfde.png">
+                                            <a href="https://okfn.de/" target="_blank" rel="noopener" aria-label="Open Knowledge Foundation Deutschland (öffnet in neuem Tab)">
+                                                <img alt="Open Knowledge Foundation Deutschland" class="img-fluid"
+                                                    src="theme/relaunch2018/img/footer/okfde.png">
+                                            </a>
                                         </div>
                                         <div class="col-md-auto mb-5 mb-md-0 text-center">
-                                            <img alt="Wikimedia Deutschland" class="img-fluid"
-                                                src="theme/relaunch2018/img/footer/wmde.png">
+                                            <a href="https://www.wikimedia.de/" target="_blank" rel="noopener" aria-label="Wikimedia Deutschland (öffnet in neuem Tab)">
+                                                <img alt="Wikimedia Deutschland" class="img-fluid"
+                                                    src="theme/relaunch2018/img/footer/wmde.png">
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
