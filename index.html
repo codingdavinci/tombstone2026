@@ -28,11 +28,79 @@
             visibility: hidden;
         }
 
-        /* Burger menu is intentionally inert on this static page. */
-        .navbar .navbar-toggler,
-        .navbar .navbar-toggler:hover,
-        .navbar .navbar-toggler:focus {
-            cursor: not-allowed !important;
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        #block-views-block-events-block-1 .view-content {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #block-views-block-events-block-1 .node--link-wrapper--event {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        #block-views-block-events-block-1 .node--type-event.node--view-mode-preview {
+            width: 100%;
+            height: 100%;
+        }
+
+        #block-views-block-events-block-1 .node--type-event.node--view-mode-preview h2 {
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            hyphens: auto;
+        }
+
+        .impressum-contacts {
+            list-style: none !important;
+            padding-left: 0 !important;
+            margin: 0 0 1.5rem !important;
+        }
+
+        .impressum-contacts li {
+            list-style: none !important;
+            margin: 0 0 0.5rem;
+        }
+
+        .impressum-contacts li::marker {
+            content: "";
+        }
+
+        .impressum-contacts li:before,
+        .impressum-contacts li::before {
+            content: none !important;
+            display: none !important;
+        }
+
+        .impressum-contacts li:last-child {
+            margin-bottom: 0;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid #1bbd7d;
+            outline-offset: 2px;
+        }
+
+        @media (max-width: 575.98px) {
+            .layout-container--wrapper main .container {
+                padding-left: 24px !important;
+                padding-right: 24px !important;
+            }
+
+            .layout-container--wrapper main .about-video-full {
+                margin-left: -24px !important;
+                margin-right: -24px !important;
+            }
         }
     </style>
 </head>
@@ -60,8 +128,12 @@
                                 <div class="region region-header">
                                     <div class="header--content">
                                         <p data-i18n="headerIntro">
-                                            Der erste deutsche Hackathon für offene Kulturdaten. Hier entfalteten von
-                                            2014 bis 2022 innovative Anwendungen das kreative Potenzial in unserem
+                                            Der erste deutsche Hackathon für
+                                            offene Kulturdaten. Hier
+                                            entfalteten von
+                                            2014 bis 2022 innovative
+                                            Anwendungen das kreative
+                                            Potenzial in unserem
                                             digitalen Kulturerbe.
                                         </p>
                                     </div>
@@ -78,18 +150,19 @@
             <nav class="navbar fixed-top">
                 <div class="navbar--wrapper">
                     <div class="navbar--left">
-                        <button class="navbar-toggler collapsed" type="button" aria-expanded="false"
+                        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+                            data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false"
                             aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="d-sm-none">
-                            <a href="#">
+                            <a href="index.html">
                                 <img class="menu--main--brand" src="theme/relaunch2018/img/CDV_icon_white.svg"
                                     alt="Coding da Vinci">
                             </a>
                         </div>
                         <div class="d-none d-sm-block">
-                            <a href="#">
+                            <a href="index.html">
                                 <img class="menu--main--brand" src="theme/relaunch2018/img/CDV_Logo_Line_white.svg"
                                     alt="Coding da Vinci">
                             </a>
@@ -107,6 +180,23 @@
                         </ul>
                     </nav>
                 </div>
+                <div class="navbar--menu">
+                    <div class="collapse navbar-collapse" id="mainMenu">
+                        <ul class="menu navbar-nav">
+                            <li class="menu-item nav-item"><a class="nav-link" href="#about"
+                                    data-i18n="menuAbout">Über</a></li>
+                            <li class="menu-item nav-item"><a class="nav-link"
+                                    href="#block-landing-page-group-possibilities"
+                                    data-i18n="menuPossibilities">Kulturdaten</a></li>
+                            <li class="menu-item nav-item"><a class="nav-link" href="#events"
+                                    data-i18n="menuEvents">Events</a></li>
+                            <li class="menu-item nav-item"><a class="nav-link" href="#playbook"
+                                    data-i18n="menuPlaybook">Playbook</a></li>
+                            <li class="menu-item nav-item"><a class="nav-link" href="#impressum"
+                                    data-i18n="menuImpressum">Impressum</a></li>
+                        </ul>
+                    </div>
+                </div>
             </nav>
         </div>
 
@@ -123,37 +213,108 @@
                         <div id="block-block-about" class="block block-block-content">
                             <div class="field field--name-field-paragraphs pt-0" style="background-color: transparent;">
                                 <div class="field__item" style="margin-top: 0; padding: 0;">
-                                    <div class="container pt-6" style="background-color: #fff;">
-                                        <h2 class="px-4" data-i18n="aboutH2">Was war Coding da Vinci?</h2>
-                                        <div class="row">
-                                            <div class="col-12 px-6">
-                                                <div class="text-formatted">
-                                                    <p data-i18n="aboutP1">
-                                                        Von 2014 bis 2022 vernetzte Coding da Vinci, der
-                                                        Kulturhackathon, Kultur- und Technikwelten miteinander und
-                                                        zeigte, welche überraschenden Möglichkeiten in offenen
-                                                        Kulturdaten stecken. In mehrwöchigen Sprintphasen
-                                                        entwickelten Teams aus Hacker*innen gemeinsam mit
-                                                        Kulturinstitutionen funktionierende Prototypen z.B. für
-                                                        Apps, Webseiten, Datenvisualisierungen, Spiele oder
-                                                        interaktive Installationen, die überraschende und
-                                                        inspirierende Wege zeigen, wie Sammlungsobjekte von
-                                                        Institutionen auf neue Weisen vermittelt und genutzt werden
-                                                        können.
-                                                    </p>
-                                                </div>
-                                            </div>
+                                    <div class="container px-6 pt-6" style="background-color: #fff;">
+                                        <h2 data-i18n="aboutH2">Was war
+                                            Coding da Vinci?</h2>
+                                        <div class="text-formatted">
+                                            <p data-i18n="aboutP1">
+                                                Von 2014 bis 2022 vernetzte
+                                                Coding da Vinci, der
+                                                Kulturhackathon, Kultur- und
+                                                Technikwelten miteinander
+                                                und
+                                                zeigte, welche
+                                                überraschenden Möglichkeiten
+                                                in offenen
+                                                Kulturdaten stecken. In
+                                                mehrwöchigen Sprintphasen
+                                                entwickelten Teams aus
+                                                Hacker*innen gemeinsam mit
+                                                Kulturinstitutionen
+                                                funktionierende Prototypen
+                                                z.B. für
+                                                Apps, Webseiten,
+                                                Datenvisualisierungen,
+                                                Spiele oder
+                                                interaktive Installationen,
+                                                die überraschende und
+                                                inspirierende Wege zeigen,
+                                                wie Sammlungsobjekte von
+                                                Institutionen auf neue
+                                                Weisen vermittelt und
+                                                genutzt werden
+                                                können.
+                                            </p>
                                         </div>
 
-                                        <div class="row mt-4">
-                                            <div class="col-12 px-0">
-                                                <div class="embed-responsive embed-responsive-16by9">
-                                                    <iframe class="embed-responsive-item"
-                                                        src="https://www.youtube-nocookie.com/embed/JPm0_xCM1kQ?si=MLbf3_RMhrdr79BR&amp;controls=1"
-                                                        title="YouTube video player"
-                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                        referrerpolicy="strict-origin-when-cross-origin"
-                                                        allowfullscreen></iframe>
+                                        <div class="mt-4 mx-n6 about-video-full">
+                                            <div class="embed-responsive embed-responsive-16by9">
+                                                <iframe class="embed-responsive-item"
+                                                    src="https://www.youtube-nocookie.com/embed/JPm0_xCM1kQ?si=MLbf3_RMhrdr79BR&amp;controls=1"
+                                                    title="YouTube video player"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                    referrerpolicy="strict-origin-when-cross-origin"
+                                                    allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Possibilities / figures block. -->
+                        <div id="block-landing-page-group-possibilities" class="block block-block-content mt-6">
+                            <div class="field field--name-field-paragraphs" style="background-color: transparent;">
+                                <div class="field__item" style="margin-top: 0; padding: 0;">
+                                    <div class="container px-6 py-6" style="background-color: #fff;">
+                                        <h2 data-i18n="possibilitiesH2">Was
+                                            mit Kulturdaten möglich ist</h2>
+                                        <div class="text-formatted">
+                                            <p data-i18n="possibilitiesP1">
+                                                … zeigen die vielen
+                                                digitalen Kulturanwendungen,
+                                                die von den
+                                                rund 2.000 Teilnehmer*innen
+                                                auf Basis hunderter
+                                                Datensets aus
+                                                Museen, Archiven,
+                                                Bibliotheken, Gedenkstätten
+                                                und anderer
+                                                Kulturinstitutionen
+                                                entwickelt wurden.
+                                            </p>
+                                        </div>
+
+                                        <div id="block-block-figures" class="block block-block-figures pb-0">
+                                            <div class="row align-items-end">
+                                                <div
+                                                    class="block-figures--item block-figures--item--institutions col-sm-4 text-center">
+                                                    <div class="block-figures--item--image">
+                                                        <img alt="Institutionen" src="img/institutions.svg">
+                                                    </div>
+                                                    <div class="block-figures--item--number">
+                                                        <span class="js-count" data-count="362">0</span>
+                                                        <span data-i18n="figuresInstitutions">Institutionen</span>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="block-figures--item block-figures--item--datasets col-sm-4 text-center">
+                                                    <div class="block-figures--item--image">
+                                                        <img alt="Datensets" src="img/datasets.svg">
+                                                    </div>
+                                                    <div class="block-figures--item--number">
+                                                        <span class="js-count" data-count="488">0</span>
+                                                        <span data-i18n="figuresDatasets">Datensets</span>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="block-figures--item block-figures--item--projects col-sm-4 text-center">
+                                                    <div class="block-figures--item--image">
+                                                        <img alt="Projekte" src="img/projects.svg">
+                                                    </div>
+                                                    <div class="block-figures--item--number">
+                                                        <span class="js-count" data-count="217">0</span>
+                                                        <span data-i18n="figuresProjects">Projekte</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -161,49 +322,604 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="layout-content">
-                    <div class="region region-content">
-
-                        <!-- Playbook block (CSS expects this ID/classes on the frontpage). -->
-                        <div id="playbook" class="sr-only" aria-hidden="true"></div>
-                        <div id="block-block-playbook" class="block block-block-content">
+                        <!-- FAQ block 1. -->
+                        <div id="block-block-faq1" class="block block-block-content mt-6">
                             <div class="field field--name-field-paragraphs" style="background-color: transparent;">
                                 <div class="field__item" style="margin-top: 0; padding: 0;">
-                                    <div class="container pt-6" style="background-color: #fff;">
-                                        <h2 class="px-4" data-i18n="playbookH2">Das Coding da Vinci-Playbook</h2>
-                                        <div class="row">
-                                            <div class="col-12 px-6 text-formatted">
-                                                <h3 data-i18n="playbookH3">Schritt für Schritt zum eigenen
-                                                    Kultur-Hackathon</h3>
-                                                <p><img alt="Cover des Coding da Vinci-Playbooks"
-                                                        class="img-fluid float-right align-right"
-                                                        data-entity-type="file"
-                                                        data-entity-uuid="9970e32a-0c3d-4b8c-8d94-e35d67b24089"
-                                                        style="margin-left: 1em;" src="img/playbook.webp" width="500"
-                                                        loading="lazy"></p>
-                                                <div data-i18n-html="playbookP1">
-                                                    <p>Coding da Vinci ist zu einer Bewegung für offene Kulturdaten
-                                                        geworden: Werde jetzt ein Teil davon!</p>
-                                                    <p>Mit dem Coding da Vinci-Playbook kannst du eigene
-                                                        Kultur-Hackathons durchführen. Es funktioniert wie ein Kochbuch:
-                                                        Probiere das ganze Menü, einzelne Gänge oder nur bestimmte
-                                                        Zutaten aus – ganz nach deinem Geschmack. Dabei profitierst du
-                                                        von langjähriger Erfahrung aus insgesamt 14 Coding da
-                                                        Vinci-Ausgaben, mit der du Schritt für Schritt durch die
-                                                        Organisation des gesamten Prozesses geführt wirst – von der
-                                                        Bereitstellung der Daten über den kreativen „magic moment“ des
-                                                        Kick-Offs bis zur Präsentation der Ergebnisse.</p>
-                                                    <p>Das Playbook steht unter einer <a
-                                                            href="https://creativecommons.org/licenses/by-sa/4.0/"
-                                                            target="_blank" rel="noopener">Creative Commons BY-SA
-                                                            4.0 Lizenz</a> und kann frei genutzt, weitergegeben und
-                                                        angepasst werden.</p>
+                                    <div class="container px-6 py-6" style="background-color: #fff;">
+                                        <h2 data-i18n="faq1H2">Welche
+                                            Chancen bietet das digitale
+                                            Zeitalter für
+                                            Kulturinstitutionen?</h2>
+                                        <div class="text-formatted" data-i18n-html="faq1Body">
+                                            <p>Welche kreativen Energien
+                                                werden freigesetzt, wenn
+                                                digitale Kulturdaten offen
+                                                zugänglich und frei nutzbar
+                                                sind? Die digitale
+                                                Verfügbarkeit von
+                                                Kulturgütern verändert die
+                                                Beziehung zwischen
+                                                Kultureinrichtungen und
+                                                Kulturinteressierten.</p>
+                                            <p>Leider wird dieses Potenzial
+                                                häufig verkannt. Doch in
+                                                unserer vernetzten Welt wird
+                                                es für Archive, Museen,
+                                                Bibliotheken u.a. zunehmend
+                                                wichtiger, mit digitalen
+                                                Besucher*innen zu
+                                                interagieren.</p>
+                                            <p>Immer mehr
+                                                Kulturinstitutionen
+                                                digitalisieren ihre
+                                                Sammlungen. Dadurch wachsen
+                                                die Chancen, jene Sammlungen
+                                                einer breiten Öffentlichkeit
+                                                zugänglich zu machen.
+                                                Gleichzeitig gibt es
+                                                Bedenken, das digitalisierte
+                                                Kulturerbe könne durch eine
+                                                umfassende Öffnung in
+                                                irreführende Kontexte
+                                                gesetzt oder durch
+                                                kommerzielle Nachnutzung
+                                                entwertet werden. Manche
+                                                befürchten den Verlust ihrer
+                                                Deutungshoheit. Diese
+                                                Bedenken wollte Coding da
+                                                Vinci zerstreuen und dazu
+                                                anregen, die mit der
+                                                Digitalisierung
+                                                einhergehenden Perspektiven
+                                                und Fragen aktiv zu
+                                                entdecken!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FAQ block 2. -->
+                        <div id="block-block-faq2" class="block block-block-content mt-6">
+                            <div class="field field--name-field-paragraphs" style="background-color: transparent;">
+                                <div class="field__item" style="margin-top: 0; padding: 0;">
+                                    <div class="container px-6 py-6" style="background-color: #fff;">
+                                        <h2 data-i18n="faq2H2">Welche Ziele
+                                            verfolgte Coding da Vinci?</h2>
+                                        <div class="text-formatted" data-i18n-html="faq2Body">
+                                            <p>Das Projektarchiv von Coding
+                                                da Vinci (zugänglich über
+                                                die <a
+                                                    href="https://web.archive.org/web/20260101000000*/codingdavinci.de"
+                                                    target="_blank" rel="noopener">archivierte
+                                                    Version</a> dieser
+                                                Seite) ist eine
+                                                Inspirationsquelle für
+                                                Kuratoren und Mitarbeitende
+                                                digitaler Datensammlungen:
+                                                Hier können sie die
+                                                Potenziale frei zugänglicher
+                                                und nutzbarer Kulturdaten
+                                                erkennen und erleben.</p>
+                                            <p>Mit seiner ersten regionalen
+                                                Ausgabe wurde Coding da
+                                                Vinci 2016 von einem
+                                                bundesweiten Event zu einem
+                                                dezentralen Projekt mit
+                                                regionaler Ausrichtung. Es
+                                                gab die Kultur-Hackathons in
+                                                Hamburg, Berlin-Brandenburg,
+                                                in Leipzig, im
+                                                Rhein-Main-Gebiet, in
+                                                Süddeutschland, in der
+                                                Region Westfalen-Ruhrgebiet,
+                                                in der Großregion
+                                                Saar-Lor-Lux (erstmals
+                                                vollständig
+                                                grenzübergreifend), in
+                                                Niedersachsen,
+                                                Schleswig-Holstein, in der
+                                                Region
+                                                Rheinland/Niederrhein, in
+                                                Baden-Württemberg und
+                                                (ebenfalls
+                                                länderübergreifend) in
+                                                Sachsen, Polen und der
+                                                Tschechischen Republik.</p>
+                                            <p>Die langfristige Vision von
+                                                Coding da Vinci war die
+                                                Schaffung dauerhafter
+                                                Strukturen, in denen
+                                                Kulturinstitutionen und
+                                                interessierte Teile der
+                                                Zivilgesellschaft auf Basis
+                                                offener Daten
+                                                zusammenarbeiten. Wir
+                                                wollten einen strukturellen
+                                                Wandel in den
+                                                Kulturerbeinstitutionen
+                                                befördern, offene Daten als
+                                                Thema für die Politik
+                                                entwickeln und die
+                                                Zugänglichkeit digitalen
+                                                Kulturerbes in der
+                                                Gesellschaft bekannt
+                                                machen.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Events block. -->
+                        <div id="events" class="sr-only" aria-hidden="true"></div>
+                        <div class="views-element-container block block-views block-views-blockevents-block-1 mt-6"
+                            id="block-views-block-events-block-1">
+                            <div class="field field--name-field-paragraphs" style="background-color: transparent;">
+                                <div class="field__item" style="margin-top: 0; padding: 0;">
+                                    <div class="container px-6 py-6" style="background-color: #fff;">
+                                        <h2 data-i18n="eventsH2">Events</h2>
+                                        <hr class="separator">
+                                        <div
+                                            class="view view-events view-id-events view-display-id-block_1 js-view-dom-id-cb9484aa570149d8d2ea53b8b4c1727ff82450beb80195798b7013f24c0424dc">
+                                            <div class="view-content">
+                                                <div class="views-row">
+                                                    <article data-history-node-id="2334"
+                                                        class="node node--type-event node--view-mode-preview"
+                                                        data-color-scheme-hover="1BBD7D"
+                                                        style="background-color: rgb(27, 189, 125);">
+
+                                                        <div class="node--event--teaser--year">2022</div>
+
+                                                        <div class="node--event--teaser--logo"><img
+                                                                alt="Coding da Vinci"
+                                                                src="theme/relaunch2018/img/CDV_Logo_Line_white.svg">
+                                                        </div>
+
+                                                        <h2>
+                                                            Abschlusskonferenz
+                                                        </h2>
+
+                                                    </article>
                                                 </div>
-                                                <p><a data-i18n="playbookA" class="button button--green mb-3"
-                                                        href="https://www.degruyter.com/document/doi/10.1515/9783111085883/html"
-                                                        target="_blank">Jetzt kostenlos downloaden!</a></p>
+                                                <div class="views-row">
+                                                    <article data-history-node-id="2165"
+                                                        class="node node--type-event node--view-mode-preview"
+                                                        data-color-scheme-hover="6FCF97"
+                                                        style="background-color: rgb(27, 189, 125);">
+
+                                                        <div class="node--event--teaser--year">2022</div>
+
+                                                        <div class="node--event--teaser--logo"><img
+                                                                alt="Coding da Vinci"
+                                                                src="theme/relaunch2018/img/CDV_Logo_Line_white.svg">
+                                                        </div>
+
+                                                        <h2>
+                                                            Baden-Württemberg
+                                                            2022
+                                                        </h2>
+
+                                                    </article>
+                                                </div>
+                                                <div class="views-row">
+                                                    <a href="static/2022-auswertung-cdvo.pdf" target="_blank"
+                                                        rel="bookmark noopener"
+                                                        aria-label="Abschlussbericht Ost³ 2022 (PDF, öffnet in neuem Tab) / Final report Ost³ 2022 (PDF, opens in new tab)"
+                                                        class="node--link-wrapper node--link-wrapper--event">
+                                                        <article data-history-node-id="2102"
+                                                            class="node node--type-event node--view-mode-preview"
+                                                            data-color-scheme-hover="ABE7E7"
+                                                            style="background-color: rgb(27, 189, 125);">
+
+                                                            <div class="node--event--teaser--year">2022</div>
+
+                                                            <div class="node--event--teaser--logo"><img
+                                                                    alt="Coding da Vinci"
+                                                                    src="theme/relaunch2018/img/CDV_Logo_Line_white.svg">
+                                                            </div>
+
+                                                            <h2>
+                                                                Ost³ 2022
+                                                            </h2>
+
+                                                        </article>
+                                                    </a>
+                                                </div>
+                                                <div class="views-row">
+                                                    <a href="static/2021-auswertung-cdvnrl.pdf" target="_blank"
+                                                        rel="bookmark noopener"
+                                                        aria-label="Abschlussbericht Nieder.Rhein.Land 2021 (PDF, öffnet in neuem Tab) / Final report Nieder.Rhein.Land 2021 (PDF, opens in new tab)"
+                                                        class="node--link-wrapper node--link-wrapper--event">
+                                                        <article data-history-node-id="1938"
+                                                            class="node node--type-event node--view-mode-preview"
+                                                            data-color-scheme-hover="F8CF77">
+
+                                                            <div class="node--event--teaser--year">2021</div>
+
+                                                            <div class="node--event--teaser--logo"><img
+                                                                    alt="Coding da Vinci"
+                                                                    src="theme/relaunch2018/img/CDV_Logo_Line_white.svg">
+                                                            </div>
+
+                                                            <h2>
+                                                                Nieder.Rhein.Land
+                                                                2021
+                                                            </h2>
+
+                                                        </article>
+                                                    </a>
+                                                </div>
+                                                <div class="views-row">
+                                                    <a href="static/2021-auswertung-cdvsh.pdf" target="_blank"
+                                                        rel="bookmark noopener"
+                                                        aria-label="Abschlussbericht Schleswig-Holstein 2021 (PDF, öffnet in neuem Tab) / Final report Schleswig-Holstein 2021 (PDF, opens in new tab)"
+                                                        class="node--link-wrapper node--link-wrapper--event">
+                                                        <article data-history-node-id="1859"
+                                                            class="node node--type-event node--view-mode-preview"
+                                                            data-color-scheme-hover="FEACBA">
+
+                                                            <div class="node--event--teaser--year">2021</div>
+
+                                                            <div class="node--event--teaser--logo"><img
+                                                                    alt="Coding da Vinci"
+                                                                    src="theme/relaunch2018/img/CDV_Logo_Line_white.svg">
+                                                            </div>
+
+                                                            <h2>
+                                                                Schleswig-Holstein
+                                                                2021
+                                                            </h2>
+
+                                                        </article>
+                                                    </a>
+                                                </div>
+                                                <div class="views-row">
+                                                    <article data-history-node-id="1850"
+                                                        class="node node--type-event node--view-mode-preview"
+                                                        data-color-scheme-hover="F29689">
+
+                                                        <div class="node--event--teaser--year">2021</div>
+
+                                                        <div class="node--event--teaser--logo"><img
+                                                                alt="Coding da Vinci"
+                                                                src="theme/relaunch2018/img/CDV_Logo_Line_white.svg">
+                                                        </div>
+
+                                                        <h2>
+                                                            Niedersachsen
+                                                            2020
+                                                        </h2>
+
+                                                    </article>
+                                                </div>
+                                                <div class="views-row">
+                                                    <a href="static/2020-auswertung-cdv.pdf" target="_blank"
+                                                        rel="bookmark noopener"
+                                                        aria-label="Abschlussbericht Saar-Lor-Lux 2020 (PDF, öffnet in neuem Tab) / Final report Saar-Lor-Lux 2020 (PDF, opens in new tab)"
+                                                        class="node--link-wrapper node--link-wrapper--event">
+                                                        <article data-history-node-id="1770"
+                                                            class="node node--type-event node--view-mode-preview"
+                                                            data-color-scheme-hover="4780A0">
+
+                                                            <div class="node--event--teaser--year">2020</div>
+
+                                                            <div class="node--event--teaser--logo"><img
+                                                                    alt="Coding da Vinci"
+                                                                    src="theme/relaunch2018/img/CDV_Logo_Line_white.svg">
+                                                            </div>
+
+                                                            <h2>
+                                                                Saar-Lor-Lux
+                                                                2020
+                                                            </h2>
+
+                                                        </article>
+                                                    </a>
+                                                </div>
+                                                <div class="views-row">
+                                                    <a href="static/2019-auswertung-cdvw.pdf" target="_blank"
+                                                        rel="bookmark noopener"
+                                                        aria-label="Abschlussbericht Westfalen-Ruhrgebiet 2019 (PDF, öffnet in neuem Tab) / Final report Westfalen-Ruhrgebiet 2019 (PDF, opens in new tab)"
+                                                        class="node--link-wrapper node--link-wrapper--event">
+                                                        <article data-history-node-id="1217"
+                                                            class="node node--type-event node--view-mode-preview"
+                                                            data-color-scheme-hover="FDA87E">
+
+                                                            <div class="node--event--teaser--year">2019</div>
+
+                                                            <div class="node--event--teaser--logo"><img
+                                                                    alt="Coding da Vinci"
+                                                                    src="theme/relaunch2018/img/CDV_Logo_Line_white.svg">
+                                                            </div>
+
+                                                            <h2>
+                                                                Westfalen-Ruhrgebiet
+                                                                2019
+                                                            </h2>
+
+                                                        </article>
+                                                    </a>
+                                                </div>
+                                                <div class="views-row">
+                                                    <a href="static/2019-auswertung-cdvs.pdf" target="_blank"
+                                                        rel="bookmark noopener"
+                                                        aria-label="Abschlussbericht Süd 2019 (PDF, öffnet in neuem Tab) / Final report Süd 2019 (PDF, opens in new tab)"
+                                                        class="node--link-wrapper node--link-wrapper--event">
+                                                        <article data-history-node-id="517"
+                                                            class="node node--type-event node--view-mode-preview"
+                                                            data-color-scheme-hover="FFE6B5">
+
+                                                            <div class="node--event--teaser--year">2019</div>
+
+                                                            <div class="node--event--teaser--logo"><img
+                                                                    alt="Coding da Vinci"
+                                                                    src="theme/relaunch2018/img/CDV_Logo_Line_white.svg">
+                                                            </div>
+
+                                                            <h2>
+                                                                Süd 2019
+                                                            </h2>
+
+                                                        </article>
+                                                    </a>
+                                                </div>
+                                                <div class="views-row">
+                                                    <article data-history-node-id="15"
+                                                        class="node node--type-event node--view-mode-preview"
+                                                        data-color-scheme-hover="85D6D6">
+
+                                                        <div class="node--event--teaser--year">2018</div>
+
+                                                        <div class="node--event--teaser--logo"><img
+                                                                alt="Coding da Vinci"
+                                                                src="theme/relaunch2018/img/CDV_Logo_Line_white.svg">
+                                                        </div>
+
+                                                        <h2>
+                                                            Rhein-Main
+                                                            2018
+                                                        </h2>
+
+                                                    </article>
+                                                </div>
+                                                <div class="views-row">
+                                                    <article data-history-node-id="13"
+                                                        class="node node--type-event node--view-mode-preview"
+                                                        data-color-scheme-hover="FCD9C8">
+
+                                                        <div class="node--event--teaser--year">2018</div>
+
+                                                        <div class="node--event--teaser--logo"><img
+                                                                alt="Coding da Vinci"
+                                                                src="theme/relaunch2018/img/CDV_Logo_Line_white.svg">
+                                                        </div>
+
+                                                        <h2>
+                                                            Ost 2018
+                                                        </h2>
+
+                                                    </article>
+                                                </div>
+                                                <div class="views-row">
+                                                    <a href="static/2017-auswertung-cdv.pdf" target="_blank"
+                                                        rel="bookmark noopener"
+                                                        aria-label="Abschlussbericht Berlin 2017 (PDF, öffnet in neuem Tab) / Final report Berlin 2017 (PDF, opens in new tab)"
+                                                        class="node--link-wrapper node--link-wrapper--event">
+                                                        <article data-history-node-id="904"
+                                                            class="node node--type-event node--view-mode-preview"
+                                                            data-color-scheme-hover="1BBD7D">
+
+                                                            <div class="node--event--teaser--year">2017</div>
+
+                                                            <div class="node--event--teaser--logo"><img
+                                                                    alt="Coding da Vinci"
+                                                                    src="theme/relaunch2018/img/CDV_Logo_Line_white.svg">
+                                                            </div>
+
+                                                            <h2>
+                                                                Berlin 2017
+                                                            </h2>
+
+                                                        </article>
+                                                    </a>
+                                                </div>
+                                                <div class="views-row">
+                                                    <a href="static/2016-auswertung-cdv.pdf" target="_blank"
+                                                        rel="bookmark noopener"
+                                                        aria-label="Abschlussbericht Nord 2016 (PDF, öffnet in neuem Tab) / Final report Nord 2016 (PDF, opens in new tab)"
+                                                        class="node--link-wrapper node--link-wrapper--event">
+                                                        <article data-history-node-id="40"
+                                                            class="node node--type-event node--view-mode-preview"
+                                                            data-color-scheme-hover="FFC09C">
+
+                                                            <div class="node--event--teaser--year">2016</div>
+
+                                                            <div class="node--event--teaser--logo"><img
+                                                                    alt="Coding da Vinci"
+                                                                    src="theme/relaunch2018/img/CDV_Logo_Line_white.svg">
+                                                            </div>
+
+                                                            <h2>
+                                                                Nord 2016
+                                                            </h2>
+
+                                                        </article>
+                                                    </a>
+                                                </div>
+                                                <div class="views-row">
+                                                    <a href="static/2015-auswertung-cdv.pdf" target="_blank"
+                                                        rel="bookmark noopener"
+                                                        aria-label="Abschlussbericht Berlin 2015 (PDF, öffnet in neuem Tab) / Final report Berlin 2015 (PDF, opens in new tab)"
+                                                        class="node--link-wrapper node--link-wrapper--event">
+                                                        <article data-history-node-id="328"
+                                                            class="node node--type-event node--view-mode-preview"
+                                                            data-color-scheme-hover="1BBD7D">
+
+                                                            <div class="node--event--teaser--year">2015</div>
+
+                                                            <div class="node--event--teaser--logo"><img
+                                                                    alt="Coding da Vinci"
+                                                                    src="theme/relaunch2018/img/CDV_Logo_Line_white.svg">
+                                                            </div>
+
+                                                            <h2>
+                                                                Berlin 2015
+                                                            </h2>
+
+                                                        </article>
+                                                    </a>
+                                                </div>
+                                                <div class="views-row">
+                                                    <a href="static/2014-auswertung-cdv.pdf" target="_blank"
+                                                        rel="bookmark noopener"
+                                                        aria-label="Abschlussbericht Berlin 2014 (PDF, öffnet in neuem Tab) / Final report Berlin 2014 (PDF, opens in new tab)"
+                                                        class="node--link-wrapper node--link-wrapper--event">
+                                                        <article data-history-node-id="331"
+                                                            class="node node--type-event node--view-mode-preview"
+                                                            data-color-scheme-hover="1BBD7D">
+
+                                                            <div class="node--event--teaser--year">2014</div>
+
+                                                            <div class="node--event--teaser--logo"><img
+                                                                    alt="Coding da Vinci"
+                                                                    src="theme/relaunch2018/img/CDV_Logo_Line_white.svg">
+                                                            </div>
+
+                                                            <h2>
+                                                                Berlin 2014
+                                                            </h2>
+
+                                                        </article>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Playbook block (CSS expects this ID/classes on the frontpage). -->
+                        <div id="playbook" class="sr-only" aria-hidden="true"></div>
+                        <div id="block-block-playbook" class="block block-block-content mt-6">
+                            <div class="field field--name-field-paragraphs" style="background-color: transparent;">
+                                <div class="field__item" style="margin-top: 0; padding: 0;">
+                                    <div class="container px-6 py-6" style="background-color: #fff;">
+                                        <h2 data-i18n="playbookH2">Das
+                                            Coding da Vinci-Playbook</h2>
+                                        <div class="text-formatted">
+                                            <h3 data-i18n="playbookH3">Schritt
+                                                für Schritt zum eigenen
+                                                Kultur-Hackathon</h3>
+                                            <p><img alt="Cover des Coding da Vinci-Playbooks"
+                                                    class="img-fluid float-right align-right" data-entity-type="file"
+                                                    data-entity-uuid="9970e32a-0c3d-4b8c-8d94-e35d67b24089"
+                                                    style="margin-left: 1em;" src="img/playbook.webp" width="500"
+                                                    loading="lazy"></p>
+                                            <div data-i18n-html="playbookP1">
+                                                <p>Coding da Vinci ist zu
+                                                    einer Bewegung für
+                                                    offene Kulturdaten
+                                                    geworden: Werde jetzt
+                                                    ein Teil davon!</p>
+                                                <p>Mit dem Coding da
+                                                    Vinci-Playbook kannst du
+                                                    eigene
+                                                    Kultur-Hackathons
+                                                    durchführen. Es
+                                                    funktioniert wie ein
+                                                    Kochbuch:
+                                                    Probiere das ganze Menü,
+                                                    einzelne Gänge oder nur
+                                                    bestimmte
+                                                    Zutaten aus – ganz nach
+                                                    deinem Geschmack. Dabei
+                                                    profitierst du
+                                                    von langjähriger
+                                                    Erfahrung aus insgesamt
+                                                    14 Coding da
+                                                    Vinci-Ausgaben, mit der
+                                                    du Schritt für Schritt
+                                                    durch die
+                                                    Organisation des
+                                                    gesamten Prozesses
+                                                    geführt wirst – von der
+                                                    Bereitstellung der Daten
+                                                    über den kreativen
+                                                    „magic moment“ des
+                                                    Kick-Offs bis zur
+                                                    Präsentation der
+                                                    Ergebnisse.</p>
+                                                <p>Das Playbook steht unter
+                                                    einer <a href="https://creativecommons.org/licenses/by-sa/4.0/"
+                                                        target="_blank" rel="noopener">Creative
+                                                        Commons BY-SA
+                                                        4.0 Lizenz</a> und
+                                                    kann frei genutzt,
+                                                    weitergegeben und
+                                                    angepasst werden.</p>
+                                            </div>
+                                            <a data-i18n="playbookA" class="button button--green"
+                                                href="https://www.degruyter.com/document/doi/10.1515/9783111085883/html"
+                                                target="_blank">Jetzt
+                                                kostenlos downloaden!</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Impressum block. -->
+                        <div id="impressum" class="sr-only" aria-hidden="true"></div>
+                        <div id="block-block-impressum" class="block block-block-content mt-6">
+                            <div class="field field--name-field-paragraphs" style="background-color: transparent;">
+                                <div class="field__item" style="margin-top: 0; padding: 0;">
+                                    <div class="container px-6 py-6" style="background-color: #fff;">
+                                        <h2 data-i18n="impressumH2">Impressum</h2>
+                                        <div class="text-formatted">
+                                            <h3 data-i18n="impressumProviderH3">Anbieter</h3>
+                                            <div class="row">
+                                                <div class="col-lg-7">
+                                                    <p class="mb-4" data-i18n-html="impressumAddress">
+                                                        Deutsche Nationalbibliothek<br>
+                                                        Bundesunmittelbare Anstalt des Öffentlichen Rechts<br>
+                                                        vertreten durch den Generaldirektor Frank Scholze<br>
+                                                        Adickesallee 1<br>
+                                                        60322 Frankfurt am Main<br>
+                                                        Deutschland
+                                                    </p>
+                                                    <p class="mb-0" data-i18n="impressumVat">USt-ID Nr.: DE152407811</p>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <ul class="impressum-contacts mb-4">
+                                                        <li class="d-flex align-items-center">
+                                                            <span class="fas fa-envelope text-success mr-2"
+                                                                aria-hidden="true"></span>
+                                                            <span class="js-email text-success"
+                                                                data-email-user="postfach" data-email-domain="dnb"
+                                                                data-email-tld="de">postfach [at] dnb [dot] de</span>
+                                                        </li>
+                                                        <li class="d-flex align-items-center">
+                                                            <span class="fas fa-phone text-success mr-2"
+                                                                aria-hidden="true"></span>
+                                                            <a class="text-success" href="tel:+49-69-1525-0">+49 69 1525-0</a>
+                                                        </li>
+                                                        <li class="d-flex align-items-center">
+                                                            <span class="fas fa-fax text-success mr-2"
+                                                                aria-hidden="true"></span>
+                                                            <a class="text-success" href="tel:+49-69-1525-1010">+49 69 1525-1010</a>
+                                                        </li>
+                                                        <li class="d-flex align-items-center">
+                                                            <span class="fas fa-globe text-success mr-2"
+                                                                aria-hidden="true"></span>
+                                                            <a class="text-success" href="https://www.dnb.de"
+                                                                target="_blank" rel="noopener"
+                                                                aria-label="Deutsche Nationalbibliothek (öffnet in neuem Tab) / German National Library (opens in new tab)">https://www.dnb.de</a>
+                                                        </li>
+                                                    </ul>
+                                                    <a class="button button--green" data-i18n="impressumPrivacy"
+                                                        href="https://www.dnb.de/DE/Service/Datenschutz/datenschutz_node.html"
+                                                        target="_blank" rel="noopener"
+                                                        aria-label="Datenschutzerklärung (öffnet in neuem Tab) / Privacy policy (opens in new tab)">Datenschutzerklärung</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -221,44 +937,65 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-12">
-                                    <p data-i18n-html="footerP1">Coding da Vinci – Der Kultur-Hackathon wurde zwischen
-                                        2019 und 2022 von der <strong>Kulturstiftung des Bundes</strong> gefördert als
-                                        gemeinsames&nbsp;Projekt der <strong>Deutschen Digitalen Bibliothek</strong>,
-                                        dem <strong>Forschungs- und Kompetenzzentrum Digitalisierung Berlin
-                                            (digiS)</strong>, der <strong>Open Knowledge Foundation Deutschland</strong>
-                                        und <strong>Wikimedia Deutschland</strong>.</p>
+                                    <p data-i18n-html="footerP1">Coding da
+                                        Vinci – Der Kultur-Hackathon wurde
+                                        zwischen
+                                        2019 und 2022 von der
+                                        <strong>Kulturstiftung des
+                                            Bundes</strong> gefördert als
+                                        gemeinsames&nbsp;Projekt der
+                                        <strong>Deutschen Digitalen
+                                            Bibliothek</strong>,
+                                        dem <strong>Forschungs- und
+                                            Kompetenzzentrum Digitalisierung
+                                            Berlin
+                                            (digiS)</strong>, der
+                                        <strong>Open Knowledge Foundation
+                                            Deutschland</strong>
+                                        und <strong>Wikimedia
+                                            Deutschland</strong>.
+                                    </p>
                                 </div>
 
                                 <div class="col-12 logos-container">
                                     <div class="row">
-                                        <div class="col-12 pb-0" data-i18n="fundedBy">Funded by:</div>
+                                        <div class="col-12 pb-0" data-i18n="fundedBy">Funded
+                                            by:</div>
                                     </div>
                                     <div class="row align-items-center">
                                         <div class="col-md-auto mb-5 mb-md-0 text-center">
-                                            <a href="https://www.kulturstiftung-des-bundes.de/" target="_blank" rel="noopener" aria-label="Kulturstiftung des Bundes (öffnet in neuem Tab)">
+                                            <a href="https://www.kulturstiftung-des-bundes.de/" target="_blank"
+                                                rel="noopener"
+                                                aria-label="Kulturstiftung des Bundes (öffnet in neuem Tab)">
                                                 <img alt="Kulturstiftung des Bundes" class="img-fluid"
                                                     src="theme/relaunch2018/img/footer/kulturstiftung.png">
                                             </a>
                                         </div>
                                         <div class="col-md-auto mb-5 mb-md-0 text-center">
-                                            <a href="https://www.deutsche-digitale-bibliothek.de/" target="_blank" rel="noopener" aria-label="Deutsche Digitale Bibliothek (öffnet in neuem Tab)">
+                                            <a href="https://www.deutsche-digitale-bibliothek.de/" target="_blank"
+                                                rel="noopener"
+                                                aria-label="Deutsche Digitale Bibliothek (öffnet in neuem Tab)">
                                                 <img alt="Deutsche Digitale Bibliothek" class="img-fluid"
                                                     src="theme/relaunch2018/img/footer/ddb.png">
                                             </a>
                                         </div>
                                         <div class="col-md-auto mb-5 mb-md-0 text-center">
-                                            <a href="https://www.digis-berlin.de/" target="_blank" rel="noopener" aria-label="digiS (öffnet in neuem Tab)">
-                                                <img alt="digiS" class="img-fluid" src="theme/relaunch2018/img/footer/digis.png">
+                                            <a href="https://www.digis-berlin.de/" target="_blank" rel="noopener"
+                                                aria-label="digiS (öffnet in neuem Tab)">
+                                                <img alt="digiS" class="img-fluid"
+                                                    src="theme/relaunch2018/img/footer/digis.png">
                                             </a>
                                         </div>
                                         <div class="col-md-auto mb-5 mb-md-0 text-center">
-                                            <a href="https://okfn.de/" target="_blank" rel="noopener" aria-label="Open Knowledge Foundation Deutschland (öffnet in neuem Tab)">
+                                            <a href="https://okfn.de/" target="_blank" rel="noopener"
+                                                aria-label="Open Knowledge Foundation Deutschland (öffnet in neuem Tab)">
                                                 <img alt="Open Knowledge Foundation Deutschland" class="img-fluid"
                                                     src="theme/relaunch2018/img/footer/okfde.png">
                                             </a>
                                         </div>
                                         <div class="col-md-auto mb-5 mb-md-0 text-center">
-                                            <a href="https://www.wikimedia.de/" target="_blank" rel="noopener" aria-label="Wikimedia Deutschland (öffnet in neuem Tab)">
+                                            <a href="https://www.wikimedia.de/" target="_blank" rel="noopener"
+                                                aria-label="Wikimedia Deutschland (öffnet in neuem Tab)">
                                                 <img alt="Wikimedia Deutschland" class="img-fluid"
                                                     src="theme/relaunch2018/img/footer/wmde.png">
                                             </a>
@@ -272,8 +1009,10 @@
                                             <p>
                                                 <span data-i18n="contactLabel">Kontakt:</span>
                                                 <span class="icon-mail-1 js-email" data-email-user="info"
-                                                    data-email-domain="codingdavinci" data-email-tld="de">info [at]
-                                                    codingdavinci [dot] de</span>
+                                                    data-email-domain="codingdavinci" data-email-tld="de">info
+                                                    [at]
+                                                    codingdavinci [dot]
+                                                    de</span>
                                             </p>
                                         </div>
                                     </div>
@@ -289,6 +1028,15 @@
     <!-- JS dependencies used by this static page. -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+        crossorigin="anonymous"></script>
+    <script src="theme/relaunch2018/js/menu.js"></script>
+    <script src="https://code.jquery.com/color/jquery.color-2.2.0.min.js"></script>
+    <script src="theme/relaunch2018/js/color-scheme.js"></script>
 
     <!-- Minimal Drupal settings stub for header tiles JS. -->
     <script>
@@ -303,6 +1051,64 @@
 
     <!-- Theme JS (needed for the animated header tiles). -->
     <script src="theme/relaunch2018/js/header.js"></script>
+
+    <!-- Counter animation for the figures block (sequential: Institutionen → Datensets → Projekte). -->
+    <script>
+        (function () {
+            var duration = 1200; // ms per counter
+
+            // Animates a single counter el, calls onDone when finished.
+            function animateCount(el, onDone) {
+                var target = parseInt(el.getAttribute("data-count"), 10);
+                if (!target) { onDone && onDone(); return; }
+                var start = null;
+
+                function step(ts) {
+                    if (!start) start = ts;
+                    var progress = Math.min((ts - start) / duration, 1);
+                    // ease-out quad
+                    var eased = 1 - (1 - progress) * (1 - progress);
+                    el.textContent = Math.round(eased * target);
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        onDone && onDone();
+                    }
+                }
+                requestAnimationFrame(step);
+            }
+
+            // Run an array of .js-count elements one after another.
+            function runSequential(els, index) {
+                if (index >= els.length) return;
+                animateCount(els[index], function () {
+                    runSequential(els, index + 1);
+                });
+            }
+
+            function startSequential(entries, observer) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        var els = Array.from(entry.target.querySelectorAll(".js-count"));
+                        runSequential(els, 0);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }
+
+            var block = document.getElementById("block-landing-page-group-possibilities");
+            if (!block) return;
+
+            if ("IntersectionObserver" in window) {
+                new IntersectionObserver(startSequential, { threshold: 0.3 }).observe(block);
+            } else {
+                // Fallback for older browsers: show final numbers immediately.
+                block.querySelectorAll(".js-count").forEach(function (el) {
+                    el.textContent = el.getAttribute("data-count");
+                });
+            }
+        })();
+    </script>
 </body>
 
 </html>

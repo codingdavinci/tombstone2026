@@ -29,16 +29,112 @@
 
   function getColor($container, mouseOver) {
     var colorScheme = $container.data('color-scheme-hover');
+    var normalizedScheme = normalizeScheme(colorScheme, $container);
 
+    if (!normalizedScheme) {
+      return null;
+    }
+
+    $container.data('color-scheme-hover', normalizedScheme);
+    return normalizedScheme[mouseOver ? 1 : 0];
+  }
+
+  function normalizeScheme(colorScheme, $container) {
     if ($.isArray(colorScheme) && colorScheme.length === 2) {
-      return colorScheme[mouseOver ? 1 : 0];
+      var base = normalizeColor(colorScheme[0]);
+      var hover = normalizeColor(colorScheme[1]);
+
+      if (!base && !hover) {
+        return null;
+      }
+
+      return [base || hover, hover || base];
     }
 
     if (typeof colorScheme === 'string') {
-      $container.data('color-scheme-hover', [$container.css('background-color'), colorScheme]);
-      return colorScheme;
+      var base = normalizeColor($container.css('background-color'));
+      var hoverValue = normalizeColor(colorScheme);
+
+      if (!hoverValue) {
+        return null;
+      }
+
+      if (base && base === hoverValue) {
+        hoverValue = adjustHex(hoverValue, -0.12);
+      }
+
+      return [base || hoverValue, hoverValue];
     }
 
     return null;
+  }
+
+  function normalizeColor(value) {
+    if (!value) {
+      return null;
+    }
+
+    var raw = String(value).trim();
+
+    if (raw[0] === '#') {
+      return normalizeColor(raw.slice(1));
+    }
+
+    if (/^rgba?\(/i.test(raw)) {
+      return rgbToHex(raw);
+    }
+
+    if (/^[0-9a-f]{3}$/i.test(raw)) {
+      return raw.split('').map(function (c) {
+        return c + c;
+      }).join('').toUpperCase();
+    }
+
+    if (/^[0-9a-f]{6}$/i.test(raw)) {
+      return raw.toUpperCase();
+    }
+
+    if (/^[0-9a-f]{5}$/i.test(raw)) {
+      return ('0' + raw).toUpperCase();
+    }
+
+    return null;
+  }
+
+  function rgbToHex(rgb) {
+    var match = rgb.match(/rgba?\(([^)]+)\)/i);
+    if (!match) {
+      return null;
+    }
+
+    var parts = match[1].split(',').map(function (part) {
+      return parseFloat(part);
+    });
+
+    if (parts.length < 3) {
+      return null;
+    }
+
+    return toHex(parts[0]) + toHex(parts[1]) + toHex(parts[2]);
+  }
+
+  function toHex(value) {
+    var clamped = Math.max(0, Math.min(255, Math.round(value)));
+    var hex = clamped.toString(16).toUpperCase();
+    return hex.length === 1 ? '0' + hex : hex;
+  }
+
+  function adjustHex(hex, amount) {
+    var normalized = normalizeColor(hex);
+    if (!normalized) {
+      return hex;
+    }
+
+    var r = parseInt(normalized.slice(0, 2), 16);
+    var g = parseInt(normalized.slice(2, 4), 16);
+    var b = parseInt(normalized.slice(4, 6), 16);
+    var delta = Math.round(255 * amount);
+
+    return toHex(r + delta) + toHex(g + delta) + toHex(b + delta);
   }
 })(jQuery);
