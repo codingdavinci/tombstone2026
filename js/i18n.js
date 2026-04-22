@@ -19,6 +19,7 @@
       menuPossibilities: "Kulturdaten",
       menuPlaybook: "Playbook",
       menuEvents: "Events",
+      menuImpressum: "Impressum",
       eventsH2: "Events",
       eventAbschlusskonferenz: "Abschlusskonferenz",
       headerIntro:
@@ -58,6 +59,7 @@
       menuPossibilities: "Cultural data",
       menuPlaybook: "Playbook",
       menuEvents: "Events",
+      menuImpressum: "Imprint",
       eventsH2: "Events",
       eventAbschlusskonferenz: "Final Conference",
       headerIntro:
