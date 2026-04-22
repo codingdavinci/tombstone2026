@@ -20,6 +20,7 @@
       menuPlaybook: "Playbook",
       menuEvents: "Events",
       eventsH2: "Events",
+      eventAbschlusskonferenz: "Abschlusskonferenz",
       headerIntro:
         "Der erste deutsche Hackathon für offene Kulturdaten. Hier entfalteten von 2014 bis 2022 innovative Anwendungen das kreative Potenzial in unserem digitalen Kulturerbe.",
       aboutH2: "Was war Coding da Vinci?",
@@ -37,7 +38,7 @@
       impressumH2: "Impressum",
       impressumProviderH3: "Anbieter",
       impressumAddress:
-        "Deutsche Nationalbibliothek<br>Bundesunmittelbare Anstalt des Öffentlichen Rechts<br>vertreten durch den Generaldirektor Frank Scholze<br>Adickesallee 1<br>60322 Frankfurt am Main<br>Deutschland",
+        "Deutsche Nationalbibliothek<br>Bundesunmittelbare Anstalt des Öffentlichen Rechts<br>Adickesallee 1<br>60322 Frankfurt am Main<br>Deutschland",
       impressumVat: "USt-ID Nr.: DE152407811",
       impressumPrivacy: "Datenschutzerklärung",
       possibilitiesH2: "Was mit Kulturdaten möglich ist",
@@ -58,6 +59,7 @@
       menuPlaybook: "Playbook",
       menuEvents: "Events",
       eventsH2: "Events",
+      eventAbschlusskonferenz: "Final Conference",
       headerIntro:
         "Coding da Vinci, the first German hackathon for open cultural data, is a platform for innovative projects that release the creative potential of our digital cultural heritage.",
       aboutH2: "What was Coding da Vinci?",
@@ -75,7 +77,7 @@
       impressumH2: "Imprint",
       impressumProviderH3: "Provider",
       impressumAddress:
-        "German National Library<br>Federal institution under public law<br>represented by Director General Frank Scholze<br>Adickesallee 1<br>60322 Frankfurt am Main<br>Germany",
+        "German National Library<br>Federal institution under public law<br>Adickesallee 1<br>60322 Frankfurt am Main<br>Germany",
       impressumVat: "VAT ID No.: DE152407811",
       impressumPrivacy: "Privacy policy",
       possibilitiesH2: "The potential of open cultural data",
