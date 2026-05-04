@@ -3,12 +3,10 @@
 
   /**
    * Minimal i18n for the static frontpage using FormatJS (IntlMessageFormat).
-   * - Detects language via ?lang=de|en, then localStorage, then browser.
+   * - Detects language via ?lang=de|en, then browser.
    * - Translates elements with [data-i18n] (textContent) and [data-i18n-html] (innerHTML).
    * - Updates <html lang>, document.title, and the theme language switcher active state.
    */
-
-  var STORAGE_KEY = "cdv_lang";
 
   // ICU message catalogs (FormatJS).
   var messages = {
@@ -149,14 +147,6 @@
     }
   }
 
-  function getLangFromStorage() {
-    try {
-      return normalizeLang(window.localStorage.getItem(STORAGE_KEY));
-    } catch (e) {
-      return null;
-    }
-  }
-
   function getLangFromBrowser() {
     return normalizeLang(navigator.language || navigator.userLanguage);
   }
@@ -168,14 +158,6 @@
       window.history.replaceState({}, "", url.toString());
     } catch (e) {
       // Ignore (e.g. older browsers / file:// edge cases)
-    }
-  }
-
-  function persistLang(lang) {
-    try {
-      window.localStorage.setItem(STORAGE_KEY, lang);
-    } catch (e) {
-      // ignore
     }
   }
 
@@ -230,7 +212,6 @@
 
     applyTranslations(lang);
 
-    if (options.persist !== false) persistLang(lang);
     if (options.updateUrl !== false) setUrlLang(lang);
   }
 
@@ -247,6 +228,6 @@
     setLang(link.getAttribute("data-lang"));
   });
 
-  var initial = getLangFromUrl() || getLangFromStorage() || getLangFromBrowser() || "en";
+  var initial = getLangFromUrl() || getLangFromBrowser() || "en";
   setLang(initial, { updateUrl: getLangFromUrl() != null });
 })();
