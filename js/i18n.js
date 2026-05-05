@@ -48,7 +48,14 @@
       faq1H2: "Welche Chancen bietet das digitale Zeitalter f\u00fcr Kulturinstitutionen?",
       faq1Body: "<p>Welche kreativen Energien werden freigesetzt, wenn digitale Kulturdaten offen zug\u00e4nglich und frei nutzbar sind? Die digitale Verf\u00fcgbarkeit von Kulturg\u00fctern ver\u00e4ndert die Beziehung zwischen Kultureinrichtungen und Kulturinteressierten.</p><p>Leider wird dieses Potenzial h\u00e4ufig verkannt. Doch in unserer vernetzten Welt wird es f\u00fcr Archive, Museen, Bibliotheken u.a. zunehmend wichtiger, mit digitalen Besucher*innen zu interagieren.</p><p>Immer mehr Kulturinstitutionen digitalisieren ihre Sammlungen. Dadurch wachsen die Chancen, jene Sammlungen einer breiten \u00d6ffentlichkeit zug\u00e4nglich zu machen. Gleichzeitig gibt es Bedenken, das digitalisierte Kulturerbe k\u00f6nne durch eine umfassende \u00d6ffnung in irref\u00fchrende Kontexte gesetzt oder durch kommerzielle Nachnutzung entwertet werden. Manche bef\u00fcrchten den Verlust ihrer Deutungshoheit. Diese Bedenken wollte Coding da Vinci zerstreuen und dazu anregen, die mit der Digitalisierung einhergehenden Perspektiven und Fragen aktiv zu entdecken!</p>",
       faq2H2: "Welche Ziele verfolgte Coding da Vinci?",
-      faq2Body: "<p>Das Projektarchiv von Coding da Vinci (zug\u00e4nglich \u00fcber die <a href=\"https://web.archive.org/web/20260101000000*/codingdavinci.de\" target=\"_blank\" rel=\"noopener\">archivierte Version</a> dieser Seite) ist eine Inspirationsquelle f\u00fcr Kuratoren und Mitarbeitende digitaler Datensammlungen: Hier k\u00f6nnen sie die Potenziale frei zug\u00e4nglicher und nutzbarer Kulturdaten erkennen und erleben.</p><p>Mit seiner ersten regionalen Ausgabe wurde Coding da Vinci 2016 von einem bundesweiten Event zu einem dezentralen Projekt mit regionaler Ausrichtung. Es gab die Kultur-Hackathons in Hamburg, Berlin-Brandenburg, in Leipzig, im Rhein-Main-Gebiet, in S\u00fcddeutschland, in der Region Westfalen-Ruhrgebiet, in der Gro\u00dfregion Saar-Lor-Lux (erstmals vollst\u00e4ndig grenz\u00fcbergreifend), in Niedersachsen, Schleswig-Holstein, in der Region Rheinland/Niederrhein, in Baden-W\u00fcrttemberg und (ebenfalls l\u00e4nder\u00fcbergreifend) in Sachsen, Polen und der Tschechischen Republik.</p><p>Die langfristige Vision von Coding da Vinci war die Schaffung dauerhafter Strukturen, in denen Kulturinstitutionen und interessierte Teile der Zivilgesellschaft auf Basis offener Daten zusammenarbeiten. Wir wollten einen strukturellen Wandel in den Kulturerbeinstitutionen bef\u00f6rdern, offene Daten als Thema f\u00fcr die Politik entwickeln und die Zug\u00e4nglichkeit digitalen Kulturerbes in der Gesellschaft bekannt machen.</p>"
+      faq2Body: "<p>Das Projektarchiv von Coding da Vinci (zug\u00e4nglich \u00fcber die <a href=\"https://web.archive.org/web/20260101000000*/codingdavinci.de\" target=\"_blank\" rel=\"noopener\">archivierte Version</a> dieser Seite) ist eine Inspirationsquelle f\u00fcr Kuratoren und Mitarbeitende digitaler Datensammlungen: Hier k\u00f6nnen sie die Potenziale frei zug\u00e4nglicher und nutzbarer Kulturdaten erkennen und erleben.</p><p>Mit seiner ersten regionalen Ausgabe wurde Coding da Vinci 2016 von einem bundesweiten Event zu einem dezentralen Projekt mit regionaler Ausrichtung. Es gab die Kultur-Hackathons in Hamburg, Berlin-Brandenburg, in Leipzig, im Rhein-Main-Gebiet, in S\u00fcddeutschland, in der Region Westfalen-Ruhrgebiet, in der Gro\u00dfregion Saar-Lor-Lux (erstmals vollst\u00e4ndig grenz\u00fcbergreifend), in Niedersachsen, Schleswig-Holstein, in der Region Rheinland/Niederrhein, in Baden-W\u00fcrttemberg und (ebenfalls l\u00e4nder\u00fcbergreifend) in Sachsen, Polen und der Tschechischen Republik.</p><p>Die langfristige Vision von Coding da Vinci war die Schaffung dauerhafter Strukturen, in denen Kulturinstitutionen und interessierte Teile der Zivilgesellschaft auf Basis offener Daten zusammenarbeiten. Wir wollten einen strukturellen Wandel in den Kulturerbeinstitutionen bef\u00f6rdern, offene Daten als Thema f\u00fcr die Politik entwickeln und die Zug\u00e4nglichkeit digitalen Kulturerbes in der Gesellschaft bekannt machen.</p>",
+      cookieBannerAriaLabel: "Cookie-Einwilligung",
+      cookieBannerMessage1: "Wir verwenden Cookies, um die Nutzung unserer Internetseite zu verbessern. Weitere Informationen <a href=\"https://www.dnb.de/DE/Service/Datenschutz/datenschutz_node.html\" target=\"_blank\" rel=\"noopener\">hier</a>.",
+      cookieBannerMessage2: "Klicke „Akzeptieren“, um dich damit einverstanden zu erklären.",
+      cookieBannerAccept: "Akzeptieren",
+      cookieBannerDecline: "Nein, danke",
+      videoConsentNoticeLink: "Video wird nach Zustimmung zu externen Inhalten geladen.",
+      videoDirectYoutube: "Direkt auf YouTube ansehen"
     },
     en: {
       title: "Coding da Vinci – Homepage",
@@ -88,7 +95,14 @@
       faq1H2: "Which opportunities does the digital era offer to cultural institutions?",
       faq1Body: "<p>What is the creative energy unleashed by making digital cultural data openly accessible and freely usable? Digital availability of cultural goods changes the relationship between cultural institutions and individuals interested in culture.</p><p>Unfortunately, this potential is often overlooked. However, in our increasingly digital world, online interaction with visitors is key for archives, museums, libraries and other cultural institutions.</p><p>More and more cultural institutions are digitalising their collections, opening up the possibility to grant access to these collections to a wider public. At the same time there are many concerns that opening up digital cultural heritage could somehow devalue it if it were to be used out of context or re-used for commercial purposes. Some institutions even fear that their status as an authority may be undermined. Coding da Vinci wants to alleviate these concerns. It is about time that we actively explore the perspectives and questions that digitisation brings up!</p>",
       faq2H2: "What goals does Coding da Vinci pursue?",
-      faq2Body: "<p>Coding da Vinci\u2019s project archive (accessible via the <a href=\"https://web.archive.org/web/20260101000000*/codingdavinci.de\" target=\"_blank\" rel=\"noopener\">archived version</a> of this site) is a growing inspiration to curators and managers of digital collections. There, they can find and experience the potential inherent to openly accessible and re-usable cultural data.</p><p>With its first regional edition in 2016 Coding da Vinci turned from a Germany-wide to a decentralized event with regional focus. Since then, hackathons have been held in Hamburg, Berlin-Brandenburg, Leipzig, in the Rhein-Main region, in southern Germany, in the region of Westfalia and Ruhr, in Hannover and even crossing borders in the greater region of Saarland, Luxemburg and the Lorraine.</p><p>The long term vision of Coding da Vinci is to install lasting structures that allow cultural institutions to work with interested members of civil society on the basis of open data. We want to bring about structural change in cultural heritage institutions, put open data as a subject on the political agenda and popularise the accessibility of cultural heritage in all parts of society.</p>"
+      faq2Body: "<p>Coding da Vinci\u2019s project archive (accessible via the <a href=\"https://web.archive.org/web/20260101000000*/codingdavinci.de\" target=\"_blank\" rel=\"noopener\">archived version</a> of this site) is a growing inspiration to curators and managers of digital collections. There, they can find and experience the potential inherent to openly accessible and re-usable cultural data.</p><p>With its first regional edition in 2016 Coding da Vinci turned from a Germany-wide to a decentralized event with regional focus. Since then, hackathons have been held in Hamburg, Berlin-Brandenburg, Leipzig, in the Rhein-Main region, in southern Germany, in the region of Westfalia and Ruhr, in Hannover and even crossing borders in the greater region of Saarland, Luxemburg and the Lorraine.</p><p>The long term vision of Coding da Vinci is to install lasting structures that allow cultural institutions to work with interested members of civil society on the basis of open data. We want to bring about structural change in cultural heritage institutions, put open data as a subject on the political agenda and popularise the accessibility of cultural heritage in all parts of society.</p>",
+      cookieBannerAriaLabel: "Cookie consent",
+      cookieBannerMessage1: "We use cookies to improve your experience on our website. More information <a href=\"https://www.dnb.de/EN/Service/Datenschutz/datenschutz_node.html\" target=\"_blank\" rel=\"noopener\">here</a>.",
+      cookieBannerMessage2: "Click “Accept” to agree.",
+      cookieBannerAccept: "Accept",
+      cookieBannerDecline: "No, thanks",
+      videoConsentNoticeLink: "Video loads after consent for external content.",
+      videoDirectYoutube: "Watch directly on YouTube"
     }
   };
 
@@ -184,6 +198,25 @@
       var html = formatMessage(lang, key);
       if (html != null) {
         el.innerHTML = html;
+      }
+    });
+
+    document.querySelectorAll("[data-i18n-aria-label]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-aria-label");
+      if (!key) return;
+
+      var label = formatMessage(lang, key);
+      if (label != null) {
+        el.setAttribute("aria-label", label);
+      }
+    });
+
+    document.querySelectorAll("[data-i18n-href-de][data-i18n-href-en]").forEach(function (el) {
+      var href = lang === "de"
+        ? el.getAttribute("data-i18n-href-de")
+        : el.getAttribute("data-i18n-href-en");
+      if (href) {
+        el.setAttribute("href", href);
       }
     });
 

@@ -389,7 +389,7 @@
                                                     referrerpolicy="strict-origin-when-cross-origin"
                                                     allowfullscreen></iframe>
                                                 <div class="consent-embed-placeholder" data-consent-placeholder>
-                                                    <p class="mb-0"><a href="#cookie-banner" data-open-cookie-banner>Video wird nach Zustimmung zu externen Inhalten geladen.</a><br><a href="https://www.youtube.com/watch?v=JPm0_xCM1kQ" target="_blank" rel="noopener noreferrer">Direkt auf YouTube ansehen</a>.</p>
+                                                    <p class="mb-0"><a href="#cookie-banner" data-open-cookie-banner data-i18n="videoConsentNoticeLink">Video wird nach Zustimmung zu externen Inhalten geladen.</a><br><a href="https://www.youtube.com/watch?v=JPm0_xCM1kQ" target="_blank" rel="noopener noreferrer" data-i18n="videoDirectYoutube">Direkt auf YouTube ansehen</a>.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1047,6 +1047,8 @@
                                                     </ul>
                                                     <a class="button button--green" data-i18n="impressumPrivacy"
                                                         href="https://www.dnb.de/DE/Service/Datenschutz/datenschutz_node.html"
+                                                        data-i18n-href-de="https://www.dnb.de/DE/Service/Datenschutz/datenschutz_node.html"
+                                                        data-i18n-href-en="https://www.dnb.de/EN/Service/Datenschutz/datenschutz_node.html"
                                                         target="_blank" rel="noopener"
                                                         aria-label="Datenschutzerklärung (öffnet in neuem Tab) / Privacy policy (opens in new tab)">Datenschutzerklärung</a>
                                                 </div>
@@ -1156,15 +1158,15 @@
     </div>
 
     <div id="cookie-banner" class="eu-cookie-compliance-banner" role="region"
-        aria-label="Cookie-Einwilligung / Cookie consent">
+        data-i18n-aria-label="cookieBannerAriaLabel" aria-label="Cookie-Einwilligung">
         <div class="eu-cookie-compliance-content">
             <div class="eu-cookie-compliance-message">
-                <p>Wir verwenden Cookies, um die Nutzung unserer Internetseite zu verbessern. Weitere Informationen <a href="https://www.dnb.de/DE/Service/Datenschutz/datenschutz_node.html" target="_blank" rel="noopener">hier</a>.</p>
-                <p>Klicke "Akzeptieren", um dich damit einverstanden zu erklaren.</p>
+                <p data-i18n-html="cookieBannerMessage1">Wir verwenden Cookies, um die Nutzung unserer Internetseite zu verbessern. Weitere Informationen <a href="https://www.dnb.de/DE/Service/Datenschutz/datenschutz_node.html" target="_blank" rel="noopener">hier</a>.</p>
+                <p data-i18n="cookieBannerMessage2">Klicke "Akzeptieren", um dich damit einverstanden zu erklären.</p>
             </div>
             <div class="eu-cookie-compliance-buttons">
-                <button type="button" class="agree-button">Akzeptieren</button>
-                <button type="button" class="decline-button">Nein, danke</button>
+                <button type="button" class="agree-button" data-i18n="cookieBannerAccept">Akzeptieren</button>
+                <button type="button" class="decline-button" data-i18n="cookieBannerDecline">Nein, danke</button>
             </div>
         </div>
     </div>
