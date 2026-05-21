@@ -88,7 +88,7 @@
       impressumVat: "VAT ID No.: DE152407811",
       impressumPrivacy: "Privacy policy",
       possibilitiesH2: "The creative potential of open cultural data",
-      possibilitiesP1: "… demonstrated by the creative digital projects developed by around 2,000 hackathon participants on the basis of hundreds of datasets from almost 200 cultural institutions.",
+      possibilitiesP1: "… is shown by the creative digital projects made by, to date, over 2000 hackathon participants, on the basis of hundreds of datasets contributed by museums, archives, libraries, memorial sites and other cultural institutions.",
       figuresInstitutions: "Institutions",
       figuresDatasets: "Data sets",
       figuresProjects: "Projects",
