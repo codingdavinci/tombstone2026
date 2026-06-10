@@ -876,12 +876,6 @@
           .replace(/[^a-z0-9]+/g, "_")
           .replace(/^_+|_+$/g, "");
         var CONSENT_COOKIE = "cdv_cookie_consent_" + hostKey + "_v3";
-        var LEGACY_CONSENT_COOKIES = [
-          "cdv_cookie_consent_v2",
-          "cdv_cookie_consent",
-          "cookie-agreed",
-          "eu_cookie_compliance"
-        ];
         var COOKIE_MAX_AGE = 60 * 60 * 24 * 90;
         var BANNER_ANIMATION_MS = 350;
         var banner = document.getElementById("cookie-banner");
@@ -901,31 +895,12 @@
           return "";
         }
 
-        function getStoredConsent() {
-          var consent = normalizeConsent(getCookie(CONSENT_COOKIE));
-          if (consent) return consent;
-
-          for (var i = 0; i < LEGACY_CONSENT_COOKIES.length; i++) {
-            consent = normalizeConsent(getCookie(LEGACY_CONSENT_COOKIES[i]));
-            if (consent) return consent;
-          }
-
-          return "";
-        }
-
         function setCookie(name, value, maxAge) {
           var cookie = name + "=" + encodeURIComponent(value) + "; path=/; max-age=" + maxAge + "; SameSite=Lax";
           if (window.location.protocol === "https:") {
             cookie += "; Secure";
           }
           document.cookie = cookie;
-        }
-
-        function persistConsent(value) {
-          setCookie(CONSENT_COOKIE, value, COOKIE_MAX_AGE);
-          for (var i = 0; i < LEGACY_CONSENT_COOKIES.length; i++) {
-            setCookie(LEGACY_CONSENT_COOKIES[i], value, COOKIE_MAX_AGE);
-          }
         }
 
         function setConsentEmbeds(enabled) {
@@ -988,7 +963,7 @@
 
         var consent = "";
         try {
-          consent = getStoredConsent();
+          consent = normalizeConsent(getCookie(CONSENT_COOKIE));
           setConsentEmbeds(consent === "accepted");
         } catch (e) {
           consent = "";
@@ -1005,14 +980,14 @@
         var declineBtn = banner.querySelector(".decline-button");
         if (agreeBtn) {
           agreeBtn.addEventListener("click", function () {
-            persistConsent("accepted");
+            setCookie(CONSENT_COOKIE, "accepted", COOKIE_MAX_AGE);
             setConsentEmbeds(true);
             hideBanner(true);
           });
         }
         if (declineBtn) {
           declineBtn.addEventListener("click", function () {
-            persistConsent("declined");
+            setCookie(CONSENT_COOKIE, "declined", COOKIE_MAX_AGE);
             setConsentEmbeds(false);
             hideBanner(true);
           });
