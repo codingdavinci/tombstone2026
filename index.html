@@ -97,7 +97,7 @@
         }
       }
 
-      .eu-cookie-compliance-banner {
+      .site-consent-panel {
         position: fixed;
         left: 0;
         right: 0;
@@ -108,7 +108,7 @@
         box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.2);
       }
 
-      .eu-cookie-compliance-banner.cookie-banner-enhanced {
+      .site-consent-panel.consent-panel-enhanced {
         transform: translateY(100%);
         opacity: 0;
         pointer-events: none;
@@ -117,23 +117,23 @@
           opacity 0.35s ease;
       }
 
-      .eu-cookie-compliance-banner.cookie-banner-enhanced.is-visible {
+      .site-consent-panel.consent-panel-enhanced.is-visible {
         transform: translateY(0);
         opacity: 1;
         pointer-events: auto;
       }
 
-      .eu-cookie-compliance-banner.cookie-banner-enhanced.is-hiding {
+      .site-consent-panel.consent-panel-enhanced.is-hiding {
         transform: translateY(100%);
         opacity: 0;
         pointer-events: none;
       }
 
-      .eu-cookie-compliance-banner[hidden] {
+      .site-consent-panel[hidden] {
         display: none !important;
       }
 
-      .eu-cookie-compliance-banner .eu-cookie-compliance-content {
+      .site-consent-panel .consent-panel-content {
         display: flex;
         flex-direction: column;
         align-items: stretch;
@@ -142,32 +142,32 @@
         max-width: none;
       }
 
-      .eu-cookie-compliance-banner .eu-cookie-compliance-message {
+      .site-consent-panel .consent-panel-message {
         padding: 0.75rem 1rem;
         font-size: 0.95rem;
         line-height: 1.45;
       }
 
-      .eu-cookie-compliance-banner .eu-cookie-compliance-message p {
+      .site-consent-panel .consent-panel-message p {
         margin: 0;
         color: #fff;
       }
 
-      .eu-cookie-compliance-banner .eu-cookie-compliance-message p + p {
+      .site-consent-panel .consent-panel-message p + p {
         margin-top: 0.35rem;
       }
 
-      .eu-cookie-compliance-banner .eu-cookie-compliance-message a {
+      .site-consent-panel .consent-panel-message a {
         color: #1bbd7d;
         font-weight: 700;
         text-decoration: none;
       }
 
-      .eu-cookie-compliance-banner .eu-cookie-compliance-message a:hover {
+      .site-consent-panel .consent-panel-message a:hover {
         text-decoration: underline;
       }
 
-      .eu-cookie-compliance-banner .eu-cookie-compliance-buttons {
+      .site-consent-panel .consent-panel-actions {
         display: flex;
         flex-direction: column;
         align-items: stretch;
@@ -177,7 +177,7 @@
         border-left: 0;
       }
 
-      .eu-cookie-compliance-banner .eu-cookie-compliance-buttons button {
+      .site-consent-panel .consent-panel-actions button {
         border: 0;
         border-radius: 0;
         width: 100%;
@@ -189,23 +189,23 @@
         color: #fff;
       }
 
-      .eu-cookie-compliance-banner .eu-cookie-compliance-buttons .agree-button {
+      .site-consent-panel .consent-panel-actions .agree-button {
         background: #f1f1f1;
         color: #222;
         font-weight: 700;
       }
 
-      .eu-cookie-compliance-banner .eu-cookie-compliance-buttons .decline-button {
+      .site-consent-panel .consent-panel-actions .decline-button {
         background: transparent;
         color: #fff;
       }
 
       @media (min-width: 992px) {
-        .eu-cookie-compliance-banner .eu-cookie-compliance-content {
+        .site-consent-panel .consent-panel-content {
           flex-direction: row;
         }
 
-        .eu-cookie-compliance-banner .eu-cookie-compliance-buttons {
+        .site-consent-panel .consent-panel-actions {
           flex-direction: row;
           gap: 0;
           padding: 0;
@@ -213,12 +213,12 @@
           border-left: 1px solid #555;
         }
 
-        .eu-cookie-compliance-banner .eu-cookie-compliance-buttons button {
+        .site-consent-panel .consent-panel-actions button {
           width: auto;
           min-width: 110px;
         }
 
-        .eu-cookie-compliance-banner .eu-cookie-compliance-message {
+        .site-consent-panel .consent-panel-message {
           padding: 0.75rem 1.5rem;
           display: flex;
           flex-direction: column;
@@ -367,7 +367,7 @@
                             allowfullscreen></iframe>
                           <div class="consent-embed-placeholder" data-consent-placeholder>
                             <p class="mb-0">
-                              <a href="#cookie-banner" data-open-cookie-banner data-i18n="videoConsentNoticeLink">Video wird nach Zustimmung zu externen Inhalten geladen.</a><br><a
+                              <a href="#privacy-consent-panel" data-open-consent-panel data-i18n="videoConsentNoticeLink">Video wird nach Zustimmung zu externen Inhalten geladen.</a><br><a
                                 href="https://www.youtube.com/watch?v=JPm0_xCM1kQ"
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -854,16 +854,16 @@
         </footer>
       </div>
     </div>
-    <div id="cookie-banner" class="eu-cookie-compliance-banner" role="region" data-i18n-aria-label="cookieBannerAriaLabel" aria-label="Cookie-Einwilligung">
-      <div class="eu-cookie-compliance-content">
-        <div class="eu-cookie-compliance-message">
+    <div id="privacy-consent-panel" class="site-consent-panel" role="region" data-i18n-aria-label="cookieBannerAriaLabel" aria-label="Cookie-Einwilligung">
+      <div class="consent-panel-content">
+        <div class="consent-panel-message">
           <p data-i18n-html="cookieBannerMessage1">
             Wir verwenden Cookies, um die Nutzung unserer Internetseite zu verbessern. Weitere Informationen
             <a href="https://www.dnb.de/DE/Service/Datenschutz/datenschutz_node.html" target="_blank" rel="noopener">hier</a>.
           </p>
           <p data-i18n="cookieBannerMessage2">Klicke "Akzeptieren", um dich damit einverstanden zu erklären.</p>
         </div>
-        <div class="eu-cookie-compliance-buttons">
+        <div class="consent-panel-actions">
           <button type="button" class="agree-button" data-i18n="cookieBannerAccept">Akzeptieren</button>
           <button type="button" class="decline-button" data-i18n="cookieBannerDecline">Nein, danke</button>
         </div>
@@ -878,9 +878,9 @@
         var CONSENT_COOKIE = "cdv_cookie_consent_" + hostKey + "_v3";
         var COOKIE_MAX_AGE = 60 * 60 * 24 * 90;
         var BANNER_ANIMATION_MS = 350;
-        var banner = document.getElementById("cookie-banner");
+        var banner = document.getElementById("privacy-consent-panel");
         if (!banner) return;
-        banner.classList.add("cookie-banner-enhanced");
+        banner.classList.add("consent-panel-enhanced");
 
         function getCookie(name) {
           var escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -956,7 +956,7 @@
         var forceBanner = false;
         try {
           var params = new URLSearchParams(window.location.search);
-          forceBanner = params.get("showCookieBanner") === "1";
+          forceBanner = params.get("showConsentPanel") === "1" || params.get("showCookieBanner") === "1";
         } catch (e) {
           forceBanner = false;
         }
@@ -993,7 +993,7 @@
           });
         }
 
-        var openLinks = document.querySelectorAll("[data-open-cookie-banner]");
+        var openLinks = document.querySelectorAll("[data-open-consent-panel]");
         for (var j = 0; j < openLinks.length; j++) {
           openLinks[j].addEventListener("click", function (e) {
             e.preventDefault();
