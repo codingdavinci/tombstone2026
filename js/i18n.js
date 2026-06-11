@@ -58,7 +58,7 @@
       videoConsentNoticeLink: "Video wird nach Zustimmung zu externen Inhalten geladen.",
       videoDirectYoutube: "Direkt auf YouTube ansehen",
       error404Heading: "404 - Seite nicht gefunden",
-      error404Text: "Ups. Diese Seite spielt gerade Verstecken. Zurück zur Startseite, dort ist mehr los.",
+      error404Text: "<p>Ups! Diese Seite spielt gerade Verstecken.</p><p>Die offizielle Coding-da-Vinci-Webseite ist seit Juni 2026 offline \u2013 aber keine Sorge: Die Wayback Machine hat alles sicher archiviert. Du findest sie <a href=\"https://web.archive.org/web/20260101000000*/codingdavinci.de\" target=\"_blank\" rel=\"noopener\">hier im Webarchiv</a>.</p>",
       error404Home: "Zur Startseite"
     },
     en: {
@@ -110,7 +110,7 @@
       videoConsentNoticeLink: "Video loads after consent for external content.",
       videoDirectYoutube: "Watch directly on YouTube",
       error404Heading: "404 - Page not found",
-      error404Text: "Oops. This page is playing hide and seek. Head back to the homepage.",
+      error404Text: "<p>Oops! This page is playing hide and seek.</p><p>The official Coding da Vinci website went offline in June 2026 \u2013 but don\u2019t worry: the Wayback Machine has everything safely archived. Find it <a href=\"https://web.archive.org/web/20260101000000*/codingdavinci.de\" target=\"_blank\" rel=\"noopener\">here in the web archive</a>.</p>",
       error404Home: "Back to homepage"
     }
   };
