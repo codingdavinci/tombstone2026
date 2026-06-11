@@ -12,6 +12,7 @@
   var messages = {
     de: {
       title: "Coding da Vinci – Startseite",
+      title404: "Coding da Vinci – 404",
       skipLink: "Zum Inhalt springen",
       menuAbout: "Über",
       menuPossibilities: "Kulturdaten",
@@ -55,10 +56,14 @@
       cookieBannerAccept: "Akzeptieren",
       cookieBannerDecline: "Nein, danke",
       videoConsentNoticeLink: "Video wird nach Zustimmung zu externen Inhalten geladen.",
-      videoDirectYoutube: "Direkt auf YouTube ansehen"
+      videoDirectYoutube: "Direkt auf YouTube ansehen",
+      error404Heading: "404 - Seite nicht gefunden",
+      error404Text: "Ups. Diese Seite spielt gerade Verstecken. Zurück zur Startseite, dort ist mehr los.",
+      error404Home: "Zur Startseite"
     },
     en: {
       title: "Coding da Vinci – Homepage",
+      title404: "Coding da Vinci – 404",
       skipLink: "Skip to main content",
       menuAbout: "About",
       menuPossibilities: "Cultural data",
@@ -103,7 +108,10 @@
       cookieBannerAccept: "Accept",
       cookieBannerDecline: "No, thanks",
       videoConsentNoticeLink: "Video loads after consent for external content.",
-      videoDirectYoutube: "Watch directly on YouTube"
+      videoDirectYoutube: "Watch directly on YouTube",
+      error404Heading: "404 - Page not found",
+      error404Text: "Oops. This page is playing hide and seek. Head back to the homepage.",
+      error404Home: "Back to homepage"
     }
   };
 
@@ -179,7 +187,10 @@
   function applyTranslations(lang) {
     document.documentElement.setAttribute("lang", lang);
 
-    var title = formatMessage(lang, "title");
+    var pageTitleKey = document.body && document.body.classList.contains("path-404")
+      ? "title404"
+      : "title";
+    var title = formatMessage(lang, pageTitleKey) || formatMessage(lang, "title");
     if (title != null) document.title = title;
 
     document.querySelectorAll("[data-i18n]").forEach(function (el) {
